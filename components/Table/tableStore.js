@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 
 // components
-import CardTable from "../Card/CardTable";
 import SearchForm from "../SE";
+import CardStore from "../Card/CardStore";
 
 // layout for page
 
 // import Admin from "@/component/Layout/Admin";
 
-export default function Tables() {
+export default function TableStore() {
   const [searchTerm, setSearchTerm] = useState("");
   const handleSearch = (term) => {
     setSearchTerm(term);
@@ -21,7 +21,7 @@ export default function Tables() {
       <SearchForm onSearch={handleSearch}/>
       </div>
         <div className="w-70 mb-12 mt-2 px-4">
-          <CardTable />
+          <CardStore/>
         </div>
         <div className="w-70 mb-12 px-4">
         </div>
@@ -29,5 +29,3 @@ export default function Tables() {
     </>
   );
 }
-
-// Tables.layout = Admin;

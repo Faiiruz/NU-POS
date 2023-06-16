@@ -21,7 +21,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className='border rounded mr-12 shadow hover:bg-gray-300 mb-8'>
-            <Link href='/'>
+            <Link href='/order'>
               <div className={'flex items-center p-1'+
                       (router.pathname.indexOf("/order"))}>
                 <HiShoppingCart size={20} className='mr-1'/>Order
@@ -29,15 +29,17 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className='border rounded mr-12 shadow hover:bg-gray-300 mb-7'>
-            <Link href='/'>
-              <div className='flex items-center p-1'>
+            <Link href='/delivery'>
+              <div className={'flex items-center p-1'+
+                      (router.pathname.indexOf("/delivery"))}>
                 <FaTruck size={20} className='mr-1'/>Delivery Notes
               </div>
             </Link>
           </li>
           <li className='border rounded mr-12 shadow hover:bg-gray-300 mb-7'>
-            <Link href='/'>
-              <div className='flex items-center p-1'>
+            <Link href='/settlement'>
+              <div className={'flex items-center p-1'+
+                      (router.pathname.indexOf("/settlement"))}>
                 <RiBillFill size={20} className='mr-1'/>Settlement
               </div>
             </Link>
@@ -51,22 +53,25 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className='border rounded mr-12 shadow hover:bg-gray-300 mb-7'>
-            <Link href='/'>
-              <div className='flex items-center p-1'>
+            <Link href='/store'>
+              <div className={'flex items-center p-1'+
+                      (router.pathname.indexOf('/store'))}>
                 <FaStore size={20} className='mr-1'/>Store
               </div>
             </Link>
           </li>
           <li className='border rounded mr-12 shadow hover:bg-gray-300 mb-7'>
-            <Link href='/'>
-              <div className='flex items-center p-1'>
+            <Link href='/masterdata'>
+              <div className={'flex items-center p-1'+
+                      (router.pathname.indexOf('/masterdata'))}>
                 <RiDatabaseFill size={20} className='mr-1'/>Master Data
               </div>
             </Link>
           </li>
           <li className='border rounded mr-12 shadow hover:bg-gray-300 mb-7'>
-            <Link href='/'>
-              <div className='flex items-center p-1'>
+            <Link href='/report'>
+              <div className={'flex items-center p-1'+
+                      (router.pathname.indexOf('/report'))}>
                 <HiDocumentReport size={20} className='mr-1'/>Report
               </div>
             </Link>

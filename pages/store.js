@@ -1,14 +1,17 @@
 import Layout from '@/components/Layout/Layout'
+import TableStore from '@/components/Table/tableStore'
+import React from 'react'
 
-
-export default function Home() {
-
+const store = () => {
   return (
     <>
         <div className="mt-[53px] ml-[235px] bg-white w-auto p-4">
-      Dashboard
+      Store
     </div>
     <Layout/>
+    <TableStore/>
     </>
   )
 }
+
+export default store

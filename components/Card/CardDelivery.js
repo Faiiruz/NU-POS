@@ -1,13 +1,11 @@
 import React from "react";
-import Image from "next/image";
-import {MdModeEdit} from "react-icons/md"
+
 
 // components
 
 import TableDropdown from "components/Dropdown/TableDropdown.js";
-import Link from "next/link";
 
-export default function CardTable() {
+export default function CardDelivery() {
   return (
     <>
       <div
@@ -26,35 +24,35 @@ export default function CardTable() {
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "
                   }
                 >
-                  SKU
+                  No Delivery
                 </th>
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "
                   }
                 >
-                  Product Name
+                  Date
                 </th>
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "  
                   }
                 >
-                  Category
+                  Outlet Name
                 </th>
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "  
                   }
                 >
-                  Image
+                  Owner Name
                 </th>
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "  
                   }
                 >
-                  Barcode
+                  Address
                 </th>
                 <th
                   className={
@@ -68,21 +66,7 @@ export default function CardTable() {
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "  
                   }
                 >
-                  Distributor Price
-                </th>
-                <th
-                  className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "  
-                  }
-                >
-                  Selling Price
-                </th>
-                <th
-                  className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "  
-                  }
-                >
-                  Level
+                  No Telp
                 </th>
                 <th
                   className={
@@ -109,54 +93,35 @@ export default function CardTable() {
                       "font-bold " 
                     }
                   >
-                   184328641823
+                     347518313324
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  Aqua
+                Dec 4, 2019 21:42
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                  
-                   Minuman
+                   Oke Store
                   
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                    <Image
-                    src='/image/aqua.jpeg'
-                    alt="aqua"
-                    height={120}
-                    width={120} 
-                    />
-                  </div>
+                  Jamal
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">123714327</span>
-                    
-                  </div>
+                1901 Thornridge Cir. Shiloh, Hawaii 81063
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                Konsinyasi
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Konsinyasi
+                087649120734
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp6.000
+                <td className="bg-green-500 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                  Open
                 </td>
+                
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp6.900
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Pusat
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Avaliable
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  <Link
-                  href="/"
-                  >
-                  <MdModeEdit size={15}/>
-                  </Link>
+                  <TableDropdown/>
                 </td>
               </tr>
               <tr>
@@ -167,53 +132,34 @@ export default function CardTable() {
                       "  font-bold "   
                     }
                   >
-                    184328641823
+                      347518313324
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  Indomei Sate
+                Feb 2, 2019 19:28
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   
-                  Makanan
+                  Mantap Store
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                  <Image
-                    src='/image/indomei.jpeg'
-                    alt="aqua"
-                    height={120}
-                    width={120} 
-                    />
-                  </div>
+                  Leslie
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">122341324</span>
-                    
-                  </div>
+                2715 Ash Dr. San Jose, South Dakota 83475
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                Konsinyasi
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Konsinyasi
+                083249124034
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp2.000
+                  Parsial
                 </td>
+                
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp3.000
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Pusat
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Discontinued
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                <Link
-                  href="/"
-                  >
-                  <MdModeEdit size={15}/>
-                  </Link>
+                  <TableDropdown/>
                 </td>
               </tr>
               <tr>
@@ -224,52 +170,33 @@ export default function CardTable() {
                       "  font-bold "   
                     }
                   >
-                    184328641823
+                      347518313324
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  Sabun Lifebouy
+                Dec 30, 2019 07:52
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                   Cosmetic
+                   Cooper Store 
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                  <Image
-                    src='/image/sabun.jpeg'
-                    alt="aqua"
-                    height={120}
-                    width={120} 
-                    />
-                  </div>
+                Courtney
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">123124321</span>
-                    
-                  </div>
+                4517 Washington Ave. Manchester, Kentucky 39495
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                Konsinyasi
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Konsinyasi
+                081232534192
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp3.000
+                <td className="bg-red-500 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                  Close
                 </td>
+                
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp4.000
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Pusat
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Avaliable
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                <Link
-                  href="/"
-                  >
-                  <MdModeEdit size={15}/>
-                  </Link>
+                  <TableDropdown/>
                 </td>
               </tr>
               <tr>
@@ -280,52 +207,33 @@ export default function CardTable() {
                       "  font-bold "   
                     }
                   >
-                    184328641823
+                      347518313324
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  Shampoo Lifebouy
+                Dec 4, 2019 21:42
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  Cosmetic
+                  Henry Store
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                  <Image
-                    src='/image/shampo.jpeg'
-                    alt="aqua"
-                    height={120}
-                    width={120} 
-                    />
-                  </div>
+                    Gladys
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">14123152</span>
-                    
-                  </div>
+                3891 Ranchview Dr. Richardson, California 62639
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                Konsinyasi
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Konsinyasi
+                081231425132
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp12.000
+                <td className="bg-green-500 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                  Open
                 </td>
+                
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp14.000
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Pusat
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Avaliable
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                <Link
-                  href="/"
-                  >
-                  <MdModeEdit size={15}/>
-                  </Link>
+                  <TableDropdown/>
                 </td>
               </tr>
               <tr>
@@ -336,53 +244,34 @@ export default function CardTable() {
                       "  font-bold "   
                     }
                   >
-                    184328641823
+                      347518313324
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  Rinso
+                Dec 30, 2019 05:18
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   
-                  Deterjen
+                Ngunyen Store
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                  <Image
-                    src='/image/rinso.jpeg'
-                    alt="aqua"
-                    height={120}
-                    width={120} 
-                    />
-                  </div>
+                Eduardo
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">12311432</span>
-                    
-                  </div>
+                2972 Westheimer Rd. Santa Ana, Illinois 85486 
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                Konsinyasi
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Konsinyasi
+                089458391119
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp16.000
+                  Parsial
                 </td>
+                
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp19.000
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Pusat
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Avaliable
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                <Link
-                  href="/"
-                  >
-                  <MdModeEdit size={15}/>
-                  </Link>
+                  <TableDropdown/>
                 </td>
               </tr>
               <tr>
@@ -393,53 +282,34 @@ export default function CardTable() {
                       "  font-bold "   
                     }
                   >
-                    184328641823
+                      347518313324
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  Downy
+                Dec 7, 2019 23:26
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   
-                  Deterjen
+                  Iyaa Store
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                  <Image
-                    src='/image/downy.jpeg'
-                    alt="aqua"
-                    height={120}
-                    width={120} 
-                    />
-                  </div>
+                    Arlene
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">123234123</span>
-                    
-                  </div>
+                8502 Preston Rd. Inglewood, Maine 98380
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                Konsinyasi
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Konsinyasi
+                083475713476
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp10.000
+                <td className="bg-red-500 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                  Close
                 </td>
+                
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Rp12.900
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Pusat
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Avaliable
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                <Link
-                  href="/"
-                  >
-                  <MdModeEdit size={15}/>
-                  </Link>
+                  <TableDropdown/>
                 </td>
               </tr>
             </tbody>

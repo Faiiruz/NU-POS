@@ -1,14 +1,15 @@
 import Layout from '@/components/Layout/Layout'
+import React from 'react'
 
-
-export default function Home() {
-
+const masterdata = () => {
   return (
     <>
         <div className="mt-[53px] ml-[235px] bg-white w-auto p-4">
-      Dashboard
+      Master Data
     </div>
     <Layout/>
     </>
   )
 }
+
+export default masterdata

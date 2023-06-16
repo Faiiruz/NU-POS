@@ -1,18 +1,17 @@
 import Layout from '@/components/Layout/Layout'
-import Tables from '@/components/Table/tables'
+import TableDelivery from '@/components/Table/tableDelivery'
 import React from 'react'
 
-
-const product = () => {
+const delivery = () => {
   return (
     <>
         <div className="mt-[53px] ml-[235px] bg-white w-screen p-4">
-      Product
+      Delivery Notes
     </div>
     <Layout/>
-    <Tables/>
+    <TableDelivery/>
     </>
   )
 }
 
-export default product
+export default delivery
