@@ -1,14 +1,13 @@
-import Layout from '@/components/Layout/Layout'
-
+import Layout from '@/components/layout/Layout'
 
 export default function Home() {
-
   return (
     <>
-        <div className="mt-[53px] ml-[235px] bg-white w-auto p-4">
-      Dashboard
-    </div>
-    <Layout/>
+    <Layout>
+      <div className='p-8'>
+        <h2 className='text-2xl font-bold mb-4'>Dashboard</h2>
+      </div>
+    </Layout>
     </>
   )
 }
