@@ -1,16 +1,18 @@
-import Layout from '@/components/layout/Layout'
-import TableProduct from '@/components/table/TableProduct'
-import React from 'react'
+import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
+import Layout from "@/components/layout/Layout";
+import TableProduct from "@/components/table/TableProduct";
+import React from "react";
 
 const product = () => {
+  const crumbs = [{ label: "Product", url: "/product" }];
   return (
     <Layout>
-        <div className='p-8'>
-            <h2 className='text-2xl font-bold mb-4'>Product</h2>
-            <TableProduct/>
-        </div>
+      <div className="p-8">
+        <Breadcrumbs crumbs={crumbs} />
+        <TableProduct />
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default product
+export default product;

@@ -1,14 +1,15 @@
-import Layout from '@/components/layout/Layout'
-import React from 'react'
+import Layout from "@/components/layout/Layout";
+import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
 
-const master = () => {
+export default function Home() {
+  const crumbs = [{ label: "Master Data" }];
   return (
-    <Layout>
-      <div className='p-8'>
-        <h2 className='text-2xl font-bold mb-4'>Master Data</h2>
-      </div>
-    </Layout>
-  )
+    <>
+      <Layout>
+        <div className="p-8">
+          <Breadcrumbs crumbs={crumbs} />
+        </div>
+      </Layout>
+    </>
+  );
 }
-
-export default master

@@ -1,20 +1,19 @@
-import React from 'react'
-import Sidebar from '../Sidebar/sidebar'
-import Header from '../header/Header'
+import React from "react";
+import Sidebar from "../Sidebar/sidebar";
+import Header from "../header/Header";
 
-const Layout = ({children}) => {
-
+const Layout = ({ children }) => {
   return (
     <>
-    <div className="flex">
-      <Sidebar />
-      <div className="flex flex-col flex-grow">
-        <Header />
-        {children}
+      <div className="flex">
+        <Sidebar />
+        <div className="flex flex-col flex-grow">
+          <Header />
+          {children}
+        </div>
       </div>
-    </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

@@ -1,18 +1,25 @@
-import Layout from '@/components/layout/Layout'
-import React from 'react'
-import Back from '@/components/backicon/Back';
+import Layout from "@/components/layout/Layout";
+import React from "react";
+import Back from "@/components/backicon/Back";
+import StockStore from "@/components/table/StockStore";
+import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
 
 const stock = () => {
+  const crumbs = [
+    { label: "Store", url: "/store" },
+    { label: "Profile", url: "/store/detail" },
+    { label: "Stocks Store", url: "/store/detail/stock" },
+  ];
   return (
     <>
-    <Layout>
-    <div className='p-8'>
-            <Back/>
-            <h2 className='text-2xl font-bold mb-4'>Stock Store</h2>
+      <Layout>
+        <div className="p-8">
+          <Breadcrumbs crumbs={crumbs} />
+          <StockStore />
         </div>
-    </Layout>
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export default stock
+export default stock;

@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import { tableData } from '../constant/table-data';
-import { AiOutlineEye, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { tableData } from "../constant/table-data";
+import { AiOutlineEye, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 const Table = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
 
   const itemsPerPage = 5; // Jumlah item per halaman
 
   const filtertableData = tableData.filter((item) =>
-  item.sku.toLowerCase().includes(searchQuery.toLowerCase())
+    item.sku.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const totalPages = Math.ceil(filtertableData.length / itemsPerPage);
@@ -33,7 +33,7 @@ const Table = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
   return (
-    <div>
+    <div className="p-6 bg-white rounded-md shadow-md">
       <input
         className="border p-1 px-2 rounded mb-4 "
         type="text"
@@ -41,10 +41,10 @@ const Table = () => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <table className="bg-white border border-slate-100">
+      <table>
         <thead>
           <tr className="text-md text-left text-slate-700">
-            <th className="py-1 px-4 w-1/5">SKU</th>
+            <th className="py-1 px-4 w-1/5">No Order</th>
             <th className="py-1 px-4 w-1/5">Date</th>
             <th className="py-1 px-4 w-1/5">Outlet Name</th>
             <th className="py-1 px-4 w-1/5">Owner Name</th>

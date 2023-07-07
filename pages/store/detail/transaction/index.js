@@ -1,20 +1,25 @@
-import Layout from '@/components/layout/Layout'
-import React from 'react'
-import Back from '@/components/backicon/Back'
-import StoreTransaction from '@/components/table/StoreTransaction'
+import Layout from "@/components/layout/Layout";
+import React from "react";
+import Back from "@/components/backicon/Back";
+import StoreTransaction from "@/components/table/StoreTransaction";
+import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
 
 const index = () => {
+  const crumbs = [
+    { label: "Store", url: "/store" },
+    { label: "Profile", url: "/store/detail" },
+    { label: "Store Transaction", url: "/store/transaction" },
+  ];
   return (
     <>
-    <Layout>
-    <div className='p-8'>
-            <Back/>
-            <h2 className='text-2xl font-bold mb-4'>Transaction Store</h2>
-            <StoreTransaction/>
+      <Layout>
+        <div className="p-8">
+          <Breadcrumbs crumbs={crumbs} />
+          <StoreTransaction />
         </div>
-    </Layout>
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export default index
+export default index;

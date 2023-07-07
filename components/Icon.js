@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-const Icons = ({ icon, className, width, rotate, hFlip, vFlip, href }) => {
+const Icons = ({ icon, className, width, rotate, hFlip, vFlip }) => {
   return (
     <>
       <Icon
@@ -10,7 +10,6 @@ const Icons = ({ icon, className, width, rotate, hFlip, vFlip, href }) => {
         icon={icon}
         className={className}
         vFlip={vFlip}
-        href={href}
       />
     </>
   );

@@ -1,18 +1,25 @@
-import Layout from '@/components/layout/Layout'
-import React from 'react'
-import Back from '@/components/backicon/Back';
+import Layout from "@/components/layout/Layout";
+import React from "react";
+import Back from "@/components/backicon/Back";
+import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
+import HistoryDeposit from "@/components/table/HistoryDeposit";
 
 const history = () => {
+  const crumbs = [
+    { label: "Store", url: "/store" },
+    { label: "Profile", url: "/store/detail" },
+    { label: "History Deposit", url: "/store/detail/history" },
+  ];
   return (
     <>
-    <Layout>
-    <div className='p-8'>
-            <Back/>
-            <h2 className='text-2xl font-bold mb-4'>History Deposit</h2>
+      <Layout>
+        <div className="p-8">
+          <Breadcrumbs crumbs={crumbs} />
+          <HistoryDeposit />
         </div>
-    </Layout>
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export default history
+export default history;

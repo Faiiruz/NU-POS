@@ -1,38 +1,50 @@
-import Back from '@/components/backicon/Back'
-import Layout from '@/components/layout/Layout'
-import DetailTransaction from '@/components/table/DetailTransaction'
-import React from 'react'
-import { dataTransaction } from '@/components/constant/table-data'
+import Back from "@/components/backicon/Back";
+import Layout from "@/components/layout/Layout";
+import DetailTransaction from "@/components/table/DetailTransaction";
+import React from "react";
+import { dataTransaction } from "@/components/constant/table-data";
+import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
 
 const detail = () => {
-
-  const firstData = dataTransaction[0]
+  const crumbs = [
+    { label: "Store", url: "/store" },
+    { label: "Profile", url: "/store/detail" },
+    { label: "Store Transaction", url: "/store/detail/transaction" },
+    {
+      label: "Detail Store Transaction",
+      url: "/store/detail/transaction/detail",
+    },
+  ];
+  const firstData = dataTransaction[0];
 
   return (
     <>
-    <Layout>
-        <div className='p-8'>
-            <Back/>
-            <div>
-            <h2 className='text-2xl font-bold'>Detail Transaction Store</h2>
-            {firstData && (
-              <div className='flex flex-col space-y-1 tracking-wide mb-3'>
-                <a>No Transaction:{firstData.no}</a>
-                <a>Date:{firstData.date}</a>
-              </div>
-            )}
-            <DetailTransaction/>
-            <div className='flex flex-col space-y-1 tracking-wide mb-3'>
-              <a>Sub Total: {firstData.subtotal}</a>
-              <a>Discount: {firstData.discount1}</a>
-              <a>Grand Total: {firstData.total}</a>
+      <Layout>
+        <div className="p-8">
+          <Back />
+          <Breadcrumbs crumbs={crumbs} />
+          {firstData && (
+            <div className="flex flex-col space-y-1 tracking-wide mb-3">
+              <a>No Transaction:{firstData.no}</a>
+              <span>
+                Date<a className="ml-[78px]"></a>:{firstData.date}
+              </span>
             </div>
-            </div>
-            
+          )}
+          <DetailTransaction />
+          <div className="flex flex-col space-y-1 tracking-wide mb-3 mt-3">
+            <span>
+              Sub Total<a className="ml-4"></a>: {firstData.subtotal}
+            </span>
+            <span>
+              Discount<a className="ml-5"></a>: {firstData.discount1}
+            </span>
+            <a>Grand Total: {firstData.total}</a>
+          </div>
         </div>
-    </Layout>
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export default detail
+export default detail;
