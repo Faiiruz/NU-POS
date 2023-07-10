@@ -14,8 +14,8 @@ const TableProduct = () => {
   const [deleteItemId, setDeleteItemId] = useState(null);
   const router = useRouter();
   const [productData, setProductData] = useState([])
-  const [dataStatus, isSetStatus] = useState({1: "Avaliable", 2: "parsial", 4: "close"})
-  const [dataLevel, isSetLeve] = useState({1: "Store" , 2: "Distributor", 4: "Pusat"})
+  const [dataStatus, isSetStatus] = useState({1: "Avaliable", 2: "Discontinue"})
+  const [dataLevel, isSetLeve] = useState({1: "Owner" , 2: "Pusat", 4: "Distributor", 8:"Store"})
   const [dataKonsinyasi, isSetKonsinyasi] = useState({1: "Non-Konsinyasi" , 2: "Konsinyasi"})
 
 
@@ -115,8 +115,8 @@ const TableProduct = () => {
           <tr className="text-left text-md text-slate-700">
             <th className="py-2 px-4   w-1/5">SKU</th>
             <th className="py-2 px-4   w-1/5">Product Name</th>
-            <th className="py-2 px-4   w-1/5">Category</th>
-            <th className="py-2 px-4   w-1/5">Image</th>
+            {/* <th className="py-2 px-4   w-1/5">Category</th>
+            <th className="py-2 px-4   w-1/5">Image</th> */}
             <th className="py-2 px-4   w-1/5">Barcode</th>
             <th className="py-2 px-4   w-1/5">Konsinyasi</th>
             <th className="py-2 px-4   w-1/5">Distributor Price</th>
@@ -132,14 +132,14 @@ const TableProduct = () => {
               <td className="py-2 px-4 w-1/5">{item.org_id}</td>
               <td className="py-2 px-4 w-1/5">{item.name}</td>
               <td className="py-2 px-4 w-1/5">{item.category_name}</td>
-              <td className="py-2 px-4 w-1/5">
+              {/* <td className="py-2 px-4 w-1/5">
                 <img
                   src={item.image}
                   alt={item.product}
                   className="w-10 h-10"
                 />
               </td>
-              <td className="py-2 px-4 w-1/5">{item.barcode}</td>
+              <td className="py-2 px-4 w-1/5">{item.barcode}</td> */}
               <td className="py-2 px-4 w-1/5">{dataKonsinyasi[item.konsinyasi]}</td>
               <td className="py-2 px-4 w-1/5">{item.distributor_price}</td>
               <td className="py-2 px-4 w-1/5">{item.store_price}</td>

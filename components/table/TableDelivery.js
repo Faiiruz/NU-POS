@@ -11,7 +11,7 @@ const TableDelivery = () => {
   const router = useRouter();
   const [dropdownItemId, setDropdownItemId] = useState(null);
   const [OrderData, setOrderData] = useState([])
-  const [dataStatus, isSetStatus] = useState({1: "request", 2: "parsial", 4: "close"})
+  const [dataStatus, isSetStatus] = useState({1: "Send", 2: "Receive"})
   const [dataType, isDataType] = useState({1: "Non-Konsinyasi", 2: "Konsinyasi"})
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const TableDelivery = () => {
         DeliveryRepository.getDelivery({ XA: dataToken }, 1)
         .then((data) => {
           setOrderData(data['data']);
+          console.log(data);
         });
       } catch (error) {
         console.error(error);
@@ -35,7 +36,7 @@ const TableDelivery = () => {
     item.to_id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleDropdownChange = (itemId, action) => {
+  const handleDropdownChange = (itemId) => {
     if (dropdownItemId === itemId) {
       setDropdownItemId(null); // Toggle dropdown visibility
     } else {
