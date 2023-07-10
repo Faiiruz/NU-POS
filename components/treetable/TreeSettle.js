@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import SettlementRepository from "@/repositories/SettlementRepository";
 
-const TreeSettle = ({ node }) => {
+const TreeSettle = () => {
   const [expanded, setExpanded] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [settleData, setSettleData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,7 +13,7 @@ const TreeSettle = ({ node }) => {
         let dataToken = JSON.parse(token);
         SettlementRepository.getSettlement({ XA: dataToken })
         .then((data) => {
-          // setOrderData(data);
+          setSettleData(data['data']);
           console.log(data);
         });
       } catch (error) {
@@ -37,20 +38,22 @@ const TreeSettle = ({ node }) => {
         className="flex items-center cursor-pointer mt-2"
         onClick={toggleExpand}
       >
-        {node.children && (
+        {settleData.map((item) => (
+        <div key={item.id}>
           <span className={`pr-2 ${expanded ? "rotate-90" : "rotate-0"}`}>
-            &#9660;
-          </span>
-        )}
-        <div key={node.id}>
-          <span className="py-1 px-10 font-bold">{node.no}</span>
-          <span className="py-1 px-10 font-bold">{node.outlet}</span>
-          <span className="py-1 px-10 font-bold">{node.total}</span>
-          <span className="py-1 px-10 font-bold">{node.date}</span>
-          <span className="py-1 px-10 font-bold">{node.info}</span>
+          &#9660;
+        </span>
+        
+          <span className="py-1 px-10 font-bold">{item.org_id}</span>
+          <span className="py-1 px-10 font-bold">{item.to_name}</span>
+          <span className="py-1 px-10 font-bold">{item.total}</span>
+          {/* <span className="py-1 px-10 font-bold">{item.date}</span> */}
+          <span className="py-1 px-10 font-bold">{item.tax}</span>
         </div>
-      </div>
-      {expanded && node.children && (
+      )
+        )} 
+        </div>
+      {expanded && settleData && (
         <div className="ml-12 mt-1">
           <table className="w-full">
             <thead>
@@ -60,10 +63,10 @@ const TreeSettle = ({ node }) => {
               </tr>
             </thead>
             <tbody>
-              {node.children.map((child) => (
-                <tr key={child.id}>
-                  <td className="py-1 px-4">{child.nodeli}</td>
-                  <td className="py-1 px-4">{child.total2}</td>
+              {settleData.map((item) => (
+                <tr key={item.id}>
+                  <td className="py-1 px-4">{item.to_id}</td>
+                  <td className="py-1 px-4">{item.sub_total}</td>
                 </tr>
               ))}
             </tbody>

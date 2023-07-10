@@ -6,13 +6,14 @@ import {
   AiOutlinePlus,
   AiOutlineCopy,
 } from "react-icons/ai";
-import StoreRepository from "@/repositories/StoreRepository";
 import Layout from "@/components/layout/Layout";
 import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
+import OrganizationRepository from "@/repositories/OrganizationRepository";
 
 const DetailStore = () => {
   const router = useRouter();
   const id = router.query['id']
+  console.log(id);
   const [getDetail, setGetDetail] = useState([])
   const crumbs = [
     { label: "Store", url: "/store" },
@@ -24,7 +25,7 @@ const DetailStore = () => {
       try {
         let token = localStorage.getItem("xa");
         let dataToken = JSON.parse(token);
-        StoreRepository.getDetailOrganization({ XA: dataToken }, id )
+        OrganizationRepository.getDetailOrganization({ XA: dataToken }, id )
         .then((data) => {
           setGetDetail(data);
         });
