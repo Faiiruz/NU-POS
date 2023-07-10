@@ -117,7 +117,7 @@ const TableProduct = () => {
             <th className="py-2 px-4   w-1/5">Product Name</th>
             {/* <th className="py-2 px-4   w-1/5">Category</th>
             <th className="py-2 px-4   w-1/5">Image</th> */}
-            <th className="py-2 px-4   w-1/5">Barcode</th>
+            <th className="py-2 px-4   w-1/5">Category</th>
             <th className="py-2 px-4   w-1/5">Konsinyasi</th>
             <th className="py-2 px-4   w-1/5">Distributor Price</th>
             <th className="py-2 px-4   w-1/5">Selling Price</th>
