@@ -30,13 +30,13 @@ const Table = () => {
 
   const itemsPerPage = 5; // Jumlah item per halaman
 
-  // const filterTableData = orderData.filter((item) =>
-  //   item.sku.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
+  const filterTableData = orderData.filter((item) =>
+    item.no_order.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  const totalPages = Math.ceil(orderData.length / itemsPerPage);
+  const totalPages = Math.ceil(filterTableData.length / itemsPerPage);
 
-  const paginatedData = orderData.slice(
+  const paginatedData = filterTableData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );

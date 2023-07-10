@@ -1,0 +1,513 @@
+### START SECTION USER ###
+### LOGIN ACCOUNT
+POST https://pos.ipm.id/service/auth/login HTTP/1.1
+content-type: application/cbor
+uspw: {"user":"adminnupusat@gmail.com","pass":"admin123"}
+
+### LOGIN MOBILE ACCOUNT
+POST https://pos.ipm.id/service/auth/mlogin HTTP/1.1
+content-type: application/cbor
+uspw: {"user":"adminnupusat@gmail.com","pass":"admin123"}
+
+### LOGOUT
+POST https://pos.ipm.id/service/auth/logout HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+### CHECK STATUS TOKEN AUTH
+GET https://pos.ipm.id/service/auth/status HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+param: user
+
+### END SECTION USER ###
+
+
+### SECTION UPLOAD FILE ###
+### Mapping Metadata
+# https://pos.ipm.id/service/dms/mapping/:id
+GET https://pos.ipm.id/service/dms/mapping/productImage HTTP/1.1
+content-type: application/cbor
+XA: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiemlkYW5lLmdudXNhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiNmFmNzI3ZjVjNDEzNTIzMzQxZmQ2MDg1ODlhYzJjNTk3MDhkMTlmMSJ9.uCxU-w39DTX_7n3PeqCi2mi1F8O1MZe_GTqV43EVH5c
+
+### Upload
+POST https://pos.ipm.id/service/dmsv2/uploadfile HTTP/1.1
+content-type: application/cbor
+XA: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiemlkYW5lLmdudXNhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiNmFmNzI3ZjVjNDEzNTIzMzQxZmQ2MDg1ODlhYzJjNTk3MDhkMTlmMSJ9.uCxU-w39DTX_7n3PeqCi2mi1F8O1MZe_GTqV43EVH5c
+
+
+### Set Metadata
+# https://pos.ipm.id/service/dmsv2/setmetadata/:UUID_FILE
+PUT https://pos.ipm.id/service/dmsv2/setmetadata/asgasgas242141 HTTP/1.1
+content-type: application/cbor
+XA: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiemlkYW5lLmdudXNhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiNmFmNzI3ZjVjNDEzNTIzMzQxZmQ2MDg1ODlhYzJjNTk3MDhkMTlmMSJ9.uCxU-w39DTX_7n3PeqCi2mi1F8O1MZe_GTqV43EVH5c
+
+{
+    "doctype":"productImage",
+    "metadata":{
+        "Module":"productImage",
+        "orgName":"GNUSA",
+        "Attachfield":"file_1",
+    }
+}
+
+
+### END SECTION UPLOADFILE ###
+
+
+### START SECTION PRODUCT ###
+### POST PRODUCT
+POST https://pos.ipm.id/service/products HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+{
+    "name": "Minuman Non-Alkohol",
+    "sku": "ZG011AQA",
+    "barcode": "CBA-5678",
+    "category": 20,
+    "category_name": "Aqua",
+    "volume": 700,
+    "volume_unit": "ML",
+    "unit": "GLASS",
+    "status": 1,
+    "konsinyasi": 1
+}
+
+### PUT PRODUCT
+PUT https://pos.ipm.id/service/products/:id HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+{
+    "name": "Minuman Non-Alkohol",
+    "sku": "ZG011AQA",
+    "barcode": "CBA-5678",
+    "category": 20,
+    "category_name": "Aqua",
+    "volume": 700,
+    "volume_unit": "ML",
+    "unit": "GLASS",
+    "status": 1,
+    "konsinyasi": 1
+}
+
+### DELETE PRODUCT
+DELETE  https://pos.ipm.id/service/products HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+["9f4bf876-9c21-4851-b848-a904f8e6ebef"]
+
+### GET PRODUCT
+GET  https://pos.ipm.id/service/products HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+
+### GET PRODUCT BY ORG ID
+GET  https://pos.ipm.id/service/products/46573edc-8f70-4ce9-a225-153ef97b52b0 HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+
+
+
+### ADJUST LEVEL PRODUCT
+PUT  https://pos.ipm.id/service/products-adjust-lvl HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+{}
+
+### END SECTION PRODUCT ###
+
+
+### START SECTION CATEGORY ###
+### POST CATEGORY
+POST https://pos.ipm.id/service/category HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+{
+    "ortu": 0,
+    "value": "Lemari Baju"
+}
+
+### PUT CATEGORY
+PUT https://pos.ipm.id/service/category/:id HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+{
+    "ortu": 0,
+    "value": "Lemari Kayu"
+}
+
+### DELETE CATEGORY
+DELETE  https://pos.ipm.id/service/category HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+["9f4bf876-9c21-4851-b848-a904f8e6ebef"]
+
+### GET CATEGORY
+GET  https://pos.ipm.id/service/category HTTP/1.1
+### find by ortu encode filter -> https://pos.ipm.id/service/category?filter=%7B%22ortu%22%3A1%7D
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+### END SECTION CATEGORY ###
+
+
+### START SECTION ORGANIZATION ###
+### POST ORGANIZATION
+POST https://pos.ipm.id/service/_organization HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+# insert org distributor
+{
+    "name": "Budi",
+    "_uname_admin": "adminnudistributor@gmail.com",
+    "password": "admin123",
+    "org_name": "DISTRIBUTOR A",
+    "org_email": "adminnudistributor@gmail.com",
+    "org_phone": "08298292929",
+    "org_address": "Jalan raya jakarta nomor 1",
+    "org_desc": "distributor a",
+    "org_province": 31,
+    "org_province_name": "DKI Jakarta",
+    "org_regency_city": 3172,
+    "org_regency_city_name": "KOTA ADM. JAKARTA UTARA",
+    "org_district": 317202,
+    "org_district_name": "KOTA ADM. JAKARTA UTARA",
+    "org_sub_district": 3172021002,
+    "org_sub_district_name": "SUNTER JAYA",
+    "org_postalCode": 17105,
+    "authority": 4
+}
+
+# insert org store
+{
+    "name": "Deni",
+    "_uname_admin": "adminnustore@gmail.com",
+    "password": "admin123",
+    "distributor_id": "46573edc-8f70-4ce9-a225-153ef97b52b0",
+    "org_name": "STORE A",
+    "org_email": "adminnustore@gmail.com",
+    "org_phone": "08298292929",
+    "org_address": "Jalan raya jakarta nomor 5",
+    "org_desc": "store a",
+    "org_province": 31,
+    "org_province_name": "DKI Jakarta",
+    "org_regency_city": 3172,
+    "org_regency_city_name": "KOTA ADM. JAKARTA UTARA",
+    "org_district": 317202,
+    "org_district_name": "KOTA ADM. JAKARTA UTARA",
+    "org_sub_district": 3172021002,
+    "org_sub_district_name": "SUNTER JAYA",
+    "org_postalCode": 17105,
+    "authority": 8
+}
+
+### UPDATE ORGANIZATION
+PUT https://pos.ipm.id/service/_organization HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+# update org distributor
+{
+    "name": "Budi",
+    "_uname_admin": "adminnudistributor@gmail.com",
+    "_uid_admin": "973254b3-2ae6-478f-8f15-6ebffee3dc70",
+    "changePassword": 1,
+    "password": "admin123",
+    "org_name": "DISTRIBUTOR A",
+    "org_email": "adminnudistributor@gmail.com",
+    "org_phone": "08298292929",
+    "org_address": "Jalan raya jakarta nomor 1",
+    "org_desc": "distributor a",
+    "org_province": "DKI Jakarta",
+    "org_regency_city": "Jakarta Pusat",
+    "org_district": "Gambir",
+    "org_sub_district": "Duri Pulo",
+    "org_postalCode": 17105,
+    "authority": 4
+}
+
+# update org store
+{
+    "name": "Deni",
+    "_uname_admin": "adminnustore@gmail.com",
+    "_uid_admin": "daca102f-6742-4d61-bd7c-35808a83be8c",
+    "changePassword": 1,
+    "password": "admin123",
+    "distributor_id": "45d45a67-45bc-409c-acad-6ad4d0d83c06",
+    "org_name": "STORE A",
+    "org_email": "adminnustore@gmail.com",
+    "org_phone": "08298292929",
+    "org_address": "Jalan raya jakarta nomor 5",
+    "org_desc": "store a",
+    "org_province": "DKI Jakarta",
+    "org_regency_city": "Jakarta Pusat",
+    "org_district": "Gambir",
+    "org_sub_district": "Duri Pulo",
+    "org_postalCode": 17105,
+    "old_to_id": "21c25a67-45bc-409c-acad-6ad4d0d83c06",
+    "authority": 8
+}
+
+### GET SELF ORGANIZATION
+GET https://pos.ipm.id/service/_organization HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+### GET ORGANIZATION BY ID
+GET https://pos.ipm.id/service/_organization/230649ab-fc83-41eb-b981-0e33f875ae4a HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+
+
+### END SECTION ORGANIZATION ###
+
+
+### START SECTION CUSTOMER ###
+### POST CUSTOMER
+POST https://pos.ipm.id/service/customer HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+{
+    "name": "Alpha",
+    "phone": 0191201291,
+    "address": "Jalan Duku 1 Nomor 5"
+}
+
+### PUT CUSTOMER
+PUT https://pos.ipm.id/service/customer/:id HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+{
+    "name": "Alpha",
+    "phone": 0191201291,
+    "address": "Jalan Duku 1 Nomor 5"
+}
+
+
+### DELETE CUSTOMER
+DELETE https://pos.ipm.id/service/customer HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+["12314"]
+
+### GET CUSTOMER
+GET https://pos.ipm.id/service/customer HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+
+### END SECTION CUSTOMER ###
+
+
+### START SECTION BILL ###
+### POST BILL
+# payment type 1= transfer bank, 2= cash, 3 deposit
+# 1 close, 2 cancel, 3 draft
+POST https://pos.ipm.id/service/bill HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+{
+    "payment": [{"type":1, "amount": 100000, "bank": "014", "bank_name": "BCA"}],
+    "customer": "99066b19-47dc-4a27-ab93-e3b4b80618ef",
+    "customer_name": "Alpha",
+    "discount_percent": 5,
+    "discount_price": 200,
+    "sub_total": 10000,
+    "grand_total": 100000,
+    "paid_total": 200000,
+    "paid_change_total": 1000,
+    "status": 3
+}
+
+### PUT BILL
+PUT https://pos.ipm.id/service/bill/:id HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+{
+    "name": "Alpha",
+    "phone": 0191201291,
+    "address": "Jalan Duku 1 Nomor 5"
+}
+
+
+### DELETE BILL
+DELETE https://pos.ipm.id/service/bill HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+["12314"]
+
+### GET BILL
+GET https://pos.ipm.id/service/bill HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+
+### END SECTION BILL ###
+
+### START SECTION ORDER ###
+### POST ORDER
+# type 1 tidak konsinyasi 2 konsinyasi
+# status
+POST https://pos.ipm.id/service/order HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+# bukan konsinyasi
+{
+    "totalQty": 5,
+    "note": "Tes123",
+    "to_id": "46573edc-8f70-4ce9-a225-153ef97b52b0",
+    "to_name": "DISTRIBUTOR A",
+    "list_order": [
+        {"product_id": "e66a50a9-3fb0-4e1c-bb3d-8856f4c777aa", "product_name": "Le Minerale", "category": 20, "category_name":"Aqua", "volume": 100, "volume_unit": "ML", "unit": "GLASS", "level": 2, "qty": 2},
+        {"product_id": "8d4d6876-ef9a-44b4-8a9e-8c2b7bbda393", "product_name": "Frutang", "category": 20, "category_name":"Aqua", "volume": 150, "volume_unit": "ML", "unit": "GLASS", "level": 8, "qty": 3}
+    ]
+}
+### PUT ORDER
+PUT https://pos.ipm.id/service/order HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+# bukan konsinyasi
+{
+    "note": "Tes123",
+    "to_id": "46573edc-8f70-4ce9-a225-153ef97b52b0",
+    "to_name": "DISTRIBUTOR A",
+    "totalQty_receive": 20,
+    "note": "Tes123",
+    "totalQty": 20,
+    "list_order": [
+        {"product_id": "e66a50a9-3fb0-4e1c-bb3d-8856f4c777aa", "product_name": "Le Minerale", "category": 20, "category_name":"Aqua", "volume": 100, "volume_unit": "ML", "unit": "GLASS", "level": 2, "qty": 2},
+        {"product_id": "8d4d6876-ef9a-44b4-8a9e-8c2b7bbda393", "product_name": "Frutang", "category": 20, "category_name":"Aqua", "volume": 150, "volume_unit": "ML", "unit": "GLASS", "level": 8, "qty": 3}
+    ]
+}
+
+### GET ORDER
+# type 1 tidak konsinyasi 2 konsinyasi
+# jika login sebagai store https://pos.ipm.id/service/order
+# jika login sebagai distributor https://pos.ipm.id/service/order?type=1&filter={"store_id":["230649ab-fc83-41eb-b981-0e33f875ae4a"]}
+GET https://pos.ipm.id/service/order?type=1 HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+
+### GET ALL DETAIL ORDER BY ORDER ID
+GET https://pos.ipm.id/service/order-detail/{order_id} HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+
+
+### END SECTION ORDER ###
+
+### START SECTION DELIVERY NOTE ###
+### POST DELIVERY NOTE
+# type 1 tidak konsinyasi 2 konsinyasi
+# status 1 send, 2 receive
+POST https://pos.ipm.id/service/delivery-note HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+{
+    "to_id": "230649ab-fc83-41eb-b981-0e33f875ae4a",
+    "to_name": "STORE A",
+    "price": 500000,
+    "type": 1,
+    "list_order": {
+        "3b2accd4-8073-42ad-bf50-d6b213ad41df":{
+            "totalQty": 5,
+            "totalQty_send": 5,
+            "detail":[
+                {"id": "d91cfa4a-a4fa-4d00-b0a2-9f2802f907fd", "qty_send": 2},
+                {"id": "fae52854-130e-407f-b63c-b248fd2a5739", "qty_send": 3}
+            ]
+        },
+        "84106923-ce04-4dae-aaeb-de53d3c49ef3":{
+            "totalQty": 5,
+            "totalQty_send": 4,
+            "detail":[
+                {"id": "ea859436-7000-46a2-8817-f405fd8d2b45", "qty_send": 2},
+                {"id": "57850d75-989f-4417-bb39-ea2b6009b417", "qty_send": 3}
+            ]
+        }
+    }
+}
+
+### UPDATE DELIVERY NOTE
+# type 1 tidak konsinyasi 2 konsinyasi
+# status 1 send, 2 receive
+PUT https://pos.ipm.id/service/delivery-note/{delivery_note_id} HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+# bukan konsinyasi
+# toko terima delivery order atau surat jalan
+{
+    "to_id": "230649ab-fc83-41eb-b981-0e33f875ae4a",
+    "to_name": "STORE A",
+    "price": 500000,
+    "type": 1,
+    "list_order": {
+        "3b2accd4-8073-42ad-bf50-d6b213ad41df":{
+            "totalQty": 5,
+            "totalQty_send": 5,
+            "totalQty_receive": 5,
+            "detail":[
+                {"id": "d91cfa4a-a4fa-4d00-b0a2-9f2802f907fd", "qty_send": 2, "qty_receive": 2},
+                {"id": "fae52854-130e-407f-b63c-b248fd2a5739", "qty_send": 3, "qty_receive": 3}
+            ]
+        },
+        "84106923-ce04-4dae-aaeb-de53d3c49ef3":{
+            "totalQty": 5,
+            "totalQty_send": 5,
+            "totalQty_receive": 4,
+            "detail":[
+                {"id": "ea859436-7000-46a2-8817-f405fd8d2b45", "qty_send": 2, "qty_receive": 2},
+                {"id": "57850d75-989f-4417-bb39-ea2b6009b417", "qty_send": 3, "qty_receive": 2}
+            ]
+        }
+    }
+}
+
+
+### GET DELIVERY NOTE
+# type 1 tidak konsinyasi 2 konsinyasi
+# jika login sebagai store https://pos.ipm.id/service/delivery-note
+# jika login sebagai distributor https://pos.ipm.id/service/delivery-note?type=1&filter={"store_id":["230649ab-fc83-41eb-b981-0e33f875ae4a"]}
+GET https://pos.ipm.id/service/delivery-note?type=1 HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+
+
+### GET ALL DETAIL DELIVERY NOTE BY DELIVERY ID
+GET https://pos.ipm.id/service/delivery-note-detail/{delivery_note_id} HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+
+### END SECTION DELIVERY NOTE ###
+
+### START SECTION SETTLEMENT ###
+### POST SETTLEMENT
+# type 1 tidak konsinyasi 2 konsinyasi
+# status 1 send, 2 receive
+POST https://pos.ipm.id/service/settlement HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+# payment type 1= transfer bank, 2= cash, 3 deposit
+{
+    "to_id": "230649ab-fc83-41eb-b981-0e33f875ae4a",
+    "to_name": "STORE A",
+    "tax": 10,
+    "sub_total": 50000,
+    "total": 60000,
+    "payment": [{"type":1, "amount": 400000, "bank": "014", "bank_name": "BCA"},{"type":2, "amount": 200000}],
+    "list_delivery_note": ["55a74153-7b43-4199-a84c-760489a9877c"]
+}
+
+### GET SETTLEMENT
+GET https://pos.ipm.id/service/settlement HTTP/1.1
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
+
+### END SECTION SETTLEMENT ###

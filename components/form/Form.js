@@ -126,6 +126,7 @@ const Form = () => {
       } catch (error) {
         console.error(error);
       } 
+      router.push('/product')
   };
 
   return (
