@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { tableStore } from "../constant/table-data";
 import {
   AiOutlineEye,
   AiOutlineLeft,
@@ -7,7 +6,8 @@ import {
   AiOutlinePlus,
 } from "react-icons/ai";
 import { useRouter } from "next/router";
-import StoreRepository from "@/repositories/StoreRepository";
+import OrganizationRepository from "@/repositories/OrganizationRepository";
+
 
 const TableStore = () => {
   const router = useRouter();
@@ -20,7 +20,7 @@ const TableStore = () => {
       try {
         let token = localStorage.getItem("xa");
         let dataToken = JSON.parse(token);
-        StoreRepository.getOrganization({ XA: dataToken })
+        OrganizationRepository.getOrganization({ XA: dataToken })
         .then((data) => {
           setOrganizationData(data['data']);
           console.log(data);
@@ -80,14 +80,13 @@ const TableStore = () => {
           Add Store
         </button>
       </div>
-      <table className="bg-white border border-slate-100 w-full">
+      <table className="bg-white w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
-            <th className="py-5 px-4 border-b">Name</th>
-            <th className="py-5 px-4 border-b">No Telp</th>
-            <th className="py-5 px-4 border-b">Address</th>
-            <th className="py-5 px-4 border-b">Deposit</th>
-            <th className="py-5 px-4 border-b"></th>
+            <th className="py-5 px-4">Name</th>
+            <th className="py-5 px-4">No Telp</th>
+            <th className="py-5 px-4">Address</th>
+            <th className="py-5 px-4"></th>
           </tr>
         </thead>
         <tbody>
@@ -96,7 +95,6 @@ const TableStore = () => {
               <td className="py-5 px-4">{item.org_name}</td>
               <td className="py-5 px-4">{item.org_phone}</td>
               <td className="py-5 px-4">{item.org_address}</td>
-              <td className="py-5 px-4">{item.deposit}</td>
               <td className="py-5 px-4">
                 <button
                   onClick={() => handleViewDetail(item.id)}

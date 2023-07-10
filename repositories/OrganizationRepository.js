@@ -140,7 +140,6 @@ class OrganizationRepository {
     })
       .then((response) => {
         const data = cbor.decode(response.data);
-        console.log(data);
         return data;
       })
       .catch((error) => {
