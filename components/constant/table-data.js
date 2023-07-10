@@ -586,7 +586,7 @@ export const settlement = [
   },
   {
     id: 6,
-    no: "#123124341",
+    no: "#421341331",
     outlet: "Jamal",
     total: "Rp1.600.000",
     date: "Dec 30, 2019 07:52",
@@ -607,20 +607,42 @@ export const konsinyasiOptions = [
 
 export const categoryOptions = [
   {
-    label: "Kategori 1",
-    value: "kategori1",
+    label: "Category 1",
+    value: "category1",
     children: [
-      { label: "Subkategori 1.1", value: "subkategori1.1" },
-      { label: "Subkategori 1.2", value: "subkategori1.2" },
+      {
+        label: "Subcategory 1.1",
+        value: "subcategory1.1",
+      },
+      {
+        label: "Subcategory 1.2",
+        value: "subcategory1.2",
+        children: [
+          {
+            label: "Subcategory 1.2.1",
+            value: "subcategory1.2.1",
+          },
+          {
+            label: "Subcategory 1.2.2",
+            value: "subcategory1.2.2",
+          },
+        ],
+      },
     ],
   },
   {
-    label: "Kategori 2",
-    value: "kategori2",
+    label: "Category 2",
+    value: "category2",
     children: [
-      { label: "Subkategori 2.1", value: "subkategori2.1" },
-      { label: "Subkategori 2.2", value: "subkategori2.2" },
+      {
+        label: "Subcategory 2.1",
+        value: "subcategory2.1",
+      },
     ],
+  },
+  {
+    label: "Category 3",
+    value: "category3",
   },
 ];
 

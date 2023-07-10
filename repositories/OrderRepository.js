@@ -1,10 +1,13 @@
 import Repository, { baseUrl } from "./Repository";
 import cbor from "cbor";
 
-class AuthRepository {
-  async postLogin(params) {
-    const reponse = await Repository.post(`${baseUrl}/auth/login`, null, {
-      headers: params,
+class OrderRepository {
+  async postOrder(params) {
+    const data = params.data;
+    const reponse = await Repository.post(`${baseUrl}/order`, data, {
+      headers: {
+        xa: params.xa,
+      },
       contentType: "application/cbor",
       responseType: "arraybuffer",
     })
@@ -19,9 +22,10 @@ class AuthRepository {
     return reponse;
   }
 
-  async postLogout(params) {
-    const reponse = await Repository.post(`${baseUrl}/auth/logout`, null, {
+  async getOrder(params, type) {
+    const reponse = await Repository.get(`${baseUrl}/order?type=${type}`, {
       headers: params,
+      contextType: "application/json",
       responseType: "arraybuffer",
     })
       .then((response) => {
@@ -29,17 +33,16 @@ class AuthRepository {
         return data;
       })
       .catch((error) => {
-        console.log(error);
-        let result = cbor.decode(error.response.data);
+        const result = cbor.decode(error.response.data);
         return result;
       });
     return reponse;
   }
 
-  async getStatus(params) {
-    const reponse = await Repository.get(`${baseUrl}/auth/status`, {
+  async getOrderDetail(params, order_id) {
+    const reponse = await Repository.get(`${baseUrl}/order-detail/${order_id}`, {
       headers: params,
-      contentType: "application/cbor",
+      contextType: "application/json",
       responseType: "arraybuffer",
     })
       .then((response) => {
@@ -47,30 +50,31 @@ class AuthRepository {
         return data;
       })
       .catch((error) => {
-        console.log(error);
-        let result = cbor.decode(error.response.data);
+        const result = cbor.decode(error.response.data);
         return result;
       });
     return reponse;
   }
 
-  async getFindMember(params) {
+  async putOrder(params) {
     const data = params.data;
-    const reponse = await Repository.post(`${baseUrl}/member/find`, data, {
+    const reponse = await Repository.put(`${baseUrl}/order`, data, {
       headers: {
         xa: params.xa,
       },
-      contentType: "application/json",
+      contextType: "application/json",
+      responseType: "arraybuffer",
     })
       .then((response) => {
-        return response;
+        const data = cbor.decode(response.data);
+        return data;
       })
       .catch((error) => {
-        // console.log(error);
-        return error.response.data;
+        const result = cbor.decode(error.response.data);
+        return result;
       });
     return reponse;
   }
 }
 
-export default new AuthRepository();
+export default new OrderRepository();

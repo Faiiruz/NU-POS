@@ -1,28 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { tableData } from "../constant/table-data";
+import OrderRepository from "@/repositories/OrderRepository";
 import { AiOutlineEye, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import moment from "moment";
 
 const Table = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
+  const [orderData, setOrderData] = useState([]);
+  const [dataStatus, isSetStatus] = useState({1: "request", 2: "parsial", 4: "close"})
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let token = localStorage.getItem("xa");
+        let dataToken = JSON.parse(token);
+        OrderRepository.getOrder({ XA: dataToken }, 1)
+        .then((data) => {
+          setOrderData(data['data']);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const itemsPerPage = 5; // Jumlah item per halaman
 
-  const filtertableData = tableData.filter((item) =>
-    item.sku.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const filterTableData = orderData.filter((item) =>
+  //   item.sku.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
-  const totalPages = Math.ceil(filtertableData.length / itemsPerPage);
+  const totalPages = Math.ceil(orderData.length / itemsPerPage);
 
-  const paginatedData = filtertableData.slice(
+  const paginatedData = orderData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  const handleViewDetail = () => {
-    router.push(`/order/detail/`);
+  const handleViewDetail = (orderId) => {
+    router.push(`/order-detail/${orderId}`);
   };
 
   const goToPreviousPage = () => {
@@ -32,10 +52,11 @@ const Table = () => {
   const goToNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
+
   return (
     <div className="p-6 bg-white rounded-md shadow-md">
       <input
-        className="border p-1 px-2 rounded mb-4 "
+        className="border p-1 px-2 rounded mb-4"
         type="text"
         placeholder="Search"
         value={searchQuery}
@@ -47,9 +68,9 @@ const Table = () => {
             <th className="py-1 px-4 w-1/5">No Order</th>
             <th className="py-1 px-4 w-1/5">Date</th>
             <th className="py-1 px-4 w-1/5">Outlet Name</th>
-            <th className="py-1 px-4 w-1/5">Owner Name</th>
-            <th className="py-1 px-4 w-1/5">Address</th>
-            <th className="py-1 px-4 w-1/5">NO</th>
+            <th className="py-1 px-4 w-1/5">Total Quantity</th>
+            <th className="py-1 px-4 w-1/5">Quantity Recived</th>
+            <th className="py-1 px-4 w-1/5">Quantity Send</th>
             <th className="py-1 px-4 w-1/5">Status</th>
             <th className="py-1 px-4 w-1/5"></th>
           </tr>
@@ -57,13 +78,13 @@ const Table = () => {
         <tbody>
           {paginatedData.map((item) => (
             <tr className="text-left text-slate-600 text-sm" key={item.id}>
-              <td className="py-2 px-4">{item.sku}</td>
-              <td className="py-2 px-4">{item.date}</td>
-              <td className="py-2 px-4">{item.outlet}</td>
-              <td className="py-2 px-4">{item.owner}</td>
-              <td className="py-2 px-4">{item.place}</td>
-              <td className="py-2 px-4">{item.no}</td>
-              <td className="text-center py-2 px-4">{item.info}</td>
+              <td className="py-2 px-4">{item.no_order}</td>
+              <td className="py-2 px-4">{item.date_request ? moment(new Date(item.date_request.epoch_time * 1000)).format('YYYY-MM-DD'):''}</td>
+              <td className="py-2 px-4">{item.org_name}</td>
+              <td className="py-2 px-4">{item.totalQty}</td>
+              <td className="py-2 px-4">{item.totalQty_receive}</td>
+              <td className="py-2 px-4">{item.totalQty_send}</td>
+              <td className="py-2 px-4">{dataStatus[item.status]}</td>
               <td className="py-2 px-4">
                 <button
                   onClick={() => handleViewDetail(item.id)}

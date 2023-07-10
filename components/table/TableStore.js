@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { tableStore } from "../constant/table-data";
 import {
   AiOutlineEye,
@@ -7,16 +7,36 @@ import {
   AiOutlinePlus,
 } from "react-icons/ai";
 import { useRouter } from "next/router";
+import StoreRepository from "@/repositories/StoreRepository";
 
 const TableStore = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [organizationData, setOrganizationData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let token = localStorage.getItem("xa");
+        let dataToken = JSON.parse(token);
+        StoreRepository.getOrganization({ XA: dataToken })
+        .then((data) => {
+          setOrganizationData(data['data']);
+          console.log(data);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const itemsPerPage = 5;
 
-  const filtertableStore = tableStore.filter((item) =>
-    item.outlet.toLowerCase().includes(searchQuery.toLowerCase())
+  const filtertableStore = organizationData.filter((item) =>
+    item.org_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const totalPages = Math.ceil(filtertableStore.length / itemsPerPage);
@@ -26,8 +46,8 @@ const TableStore = () => {
     currentPage * itemsPerPage
   );
 
-  const handleViewDetail = () => {
-    router.push(`/store/detail/`);
+  const handleViewDetail = (store_id) => {
+    router.push(`/detail-organization/${store_id}`);
   };
 
   const handleAddStore = () => {
@@ -64,7 +84,6 @@ const TableStore = () => {
         <thead>
           <tr className="text-left text-md text-slate-700">
             <th className="py-5 px-4 border-b">Name</th>
-            <th className="py-5 px-4 border-b">Owner Name</th>
             <th className="py-5 px-4 border-b">No Telp</th>
             <th className="py-5 px-4 border-b">Address</th>
             <th className="py-5 px-4 border-b">Deposit</th>
@@ -74,14 +93,13 @@ const TableStore = () => {
         <tbody>
           {paginatedData.map((item) => (
             <tr className="text-sm text-slate-700" key={item.id}>
-              <td className="py-5 px-4">{item.outlet}</td>
-              <td className="py-5 px-4">{item.owner}</td>
-              <td className="py-5 px-4">{item.no}</td>
-              <td className="py-5 px-4">{item.place}</td>
+              <td className="py-5 px-4">{item.org_name}</td>
+              <td className="py-5 px-4">{item.org_phone}</td>
+              <td className="py-5 px-4">{item.org_address}</td>
               <td className="py-5 px-4">{item.deposit}</td>
               <td className="py-5 px-4">
                 <button
-                  onClick={() => handleViewDetail(item.outlet)}
+                  onClick={() => handleViewDetail(item.id)}
                   className="flex items-center justify-center"
                 >
                   <AiOutlineEye className="w-5 h-5 mr-1" />

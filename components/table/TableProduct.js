@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { tableProduct } from "../constant/table-data";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import Link from "next/link";
 import { AiOutlineLeft, AiOutlineRight, AiOutlinePlus } from "react-icons/ai";
 import { useRouter } from "next/router";
+import ProductRepository from "@/repositories/ProductRepository";
 
 const TableProduct = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,11 +13,34 @@ const TableProduct = () => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const router = useRouter();
+  const [productData, setProductData] = useState([])
+  const [dataStatus, isSetStatus] = useState({1: "Avaliable", 2: "parsial", 4: "close"})
+  const [dataLevel, isSetLeve] = useState({1: "Store" , 2: "Distributor", 4: "Pusat"})
+  const [dataKonsinyasi, isSetKonsinyasi] = useState({1: "Non-Konsinyasi" , 2: "Konsinyasi"})
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let token = localStorage.getItem("xa");
+        let dataToken = JSON.parse(token);
+        ProductRepository.getProduct({ XA: dataToken })
+        .then((data) => {
+          setProductData(data['data']);
+          console.log(data);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const itemsPerPage = 5;
 
-  const filtertableProduct = tableProduct.filter((item) =>
-    item.sku.toLowerCase().includes(searchQuery.toLowerCase())
+  const filtertableProduct = productData.filter((item) =>
+    item.org_id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const totalPages = Math.ceil(filtertableProduct.length / itemsPerPage);
@@ -105,9 +129,9 @@ const TableProduct = () => {
         <tbody>
           {paginatedData.map((item) => (
             <tr key={item.id} className="text-sm text-slate-700">
-              <td className="py-2 px-4 w-1/5">{item.sku}</td>
-              <td className="py-2 px-4 w-1/5">{item.product}</td>
-              <td className="py-2 px-4 w-1/5">{item.category}</td>
+              <td className="py-2 px-4 w-1/5">{item.org_id}</td>
+              <td className="py-2 px-4 w-1/5">{item.name}</td>
+              <td className="py-2 px-4 w-1/5">{item.category_name}</td>
               <td className="py-2 px-4 w-1/5">
                 <img
                   src={item.image}
@@ -116,11 +140,11 @@ const TableProduct = () => {
                 />
               </td>
               <td className="py-2 px-4 w-1/5">{item.barcode}</td>
-              <td className="py-2 px-4 w-1/5">{item.konsinyasi}</td>
-              <td className="py-2 px-4 w-1/5">{item.price1}</td>
-              <td className="py-2 px-4 w-1/5">{item.price2}</td>
-              <td className="py-2 px-4 w-1/5">{item.level}</td>
-              <td className="py-2 px-4 w-1/5">{item.info}</td>
+              <td className="py-2 px-4 w-1/5">{dataKonsinyasi[item.konsinyasi]}</td>
+              <td className="py-2 px-4 w-1/5">{item.distributor_price}</td>
+              <td className="py-2 px-4 w-1/5">{item.store_price}</td>
+              <td className="py-2 px-4 w-1/5">{dataLevel[item.level]}</td>
+              <td className="py-2 px-4 w-1/5">{dataStatus[item.status]}</td>
               <td className="py-2 px-4 w-1/5">
                 <div className="relative inline-block">
                   <div

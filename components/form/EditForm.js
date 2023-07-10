@@ -25,6 +25,8 @@ const EditForm = () => {
   });
 
   const [previewImage, setPreviewImage] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedChildCategory, setSelectedChildCategory] = useState("");
 
   useEffect(() => {
     // Temukan data produk berdasarkan id
@@ -35,6 +37,8 @@ const EditForm = () => {
     if (selectedProduct) {
       setFormData(selectedProduct);
       setPreviewImage(selectedProduct.image);
+      setSelectedCategory(selectedProduct.category);
+      setSelectedChildCategory(selectedProduct.childCategory || "");
     }
   }, [id]);
 
@@ -71,9 +75,20 @@ const EditForm = () => {
 
   const handleCategoryChange = (e) => {
     const { value } = e.target;
+    setSelectedCategory(value);
+    setSelectedChildCategory("");
     setFormData((prevFormData) => ({
       ...prevFormData,
       category: value,
+    }));
+  };
+
+  const handleChildCategoryChange = (e) => {
+    const { value } = e.target;
+    setSelectedChildCategory(value);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      childCategory: value,
     }));
   };
 
@@ -148,26 +163,39 @@ const EditForm = () => {
               className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               id="category"
               name="category"
-              value={formData.category}
+              value={selectedCategory}
               onChange={handleCategoryChange}
             >
               <option value="">-- Pilih Category --</option>
               {categoryOptions.map((option) => (
-                <optgroup key={option.value} label={option.label}>
-                  {option.children && option.children.length > 0
-                    ? option.children.map((childOption) => (
-                        <option
-                          key={childOption.value}
-                          value={childOption.value}
-                        >
-                          {childOption.label}
-                        </option>
-                      ))
-                    : null}
-                </optgroup>
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
               ))}
             </select>
           </div>
+          {selectedCategory &&
+            categoryOptions.find((option) => option.value === selectedCategory)
+              ?.children && (
+              <div className="mb-4">
+                <select
+                  className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+                  id="childCategory"
+                  name="childCategory"
+                  value={selectedChildCategory}
+                  onChange={handleChildCategoryChange}
+                >
+                  <option value="">-- Pilih Child Category --</option>
+                  {categoryOptions
+                    .find((option) => option.value === selectedCategory)
+                    ?.children.map((childOption) => (
+                      <option key={childOption.value} value={childOption.value}>
+                        {childOption.label}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            )}
           <div className="mb-4">
             <label className="block mb-2 text-sm font-bold" htmlFor="image">
               Image:

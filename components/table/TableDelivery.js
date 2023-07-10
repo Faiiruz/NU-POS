@@ -1,27 +1,62 @@
-import React, { useState } from "react";
-import { tableDelivery } from "../constant/table-data";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
 import Link from "next/link";
+import DeliveryRepository from "@/repositories/DeliveryRepository";
+import moment from "moment";
+
 const TableDelivery = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const [dropdownItemId, setDropdownItemId] = useState(null);
+  const [OrderData, setOrderData] = useState([])
+  const [dataStatus, isSetStatus] = useState({1: "request", 2: "parsial", 4: "close"})
+  const [dataType, isDataType] = useState({1: "Non-Konsinyasi", 2: "Konsinyasi"})
 
-  const filtertableDelivery = tableDelivery.filter((item) =>
-    item.delivery.toLowerCase().includes(searchQuery.toLowerCase())
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let token = localStorage.getItem("xa");
+        let dataToken = JSON.parse(token);
+        DeliveryRepository.getDelivery({ XA: dataToken }, 1)
+        .then((data) => {
+          setOrderData(data['data']);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const filtertableDelivery = OrderData.filter((item) =>
+    item.to_id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleDropdownChange = (itemId, action) => {
-    if (action === "edit") {
-      // Handle edit action
-      console.log(`Edit item with id: ${itemId}`);
-    } else if (action === "view detail") setDropdownItemId(null);
+    if (dropdownItemId === itemId) {
+      setDropdownItemId(null); // Toggle dropdown visibility
+    } else {
+      setDropdownItemId(itemId);
+    }
+
+    // if (action === "edit") {
+    //   // Handle edit action
+    // } else if (action === "view detail") {
+    //   // Handle delete action
+    //   setDeleteItemId(itemId);
+    //   setShowDeleteConfirmation(true);
+    // }
   };
 
   const handleAddDelivery = () => {
     router.push(`/delivery/new/`);
+  };
+
+  const handleViewDetail = (deliveryId) => {
+    router.push(`/delivery-note-detail/${deliveryId}`);
   };
 
   return (
@@ -42,16 +77,14 @@ const TableDelivery = () => {
           Create Delivery
         </button>
       </div>
-      <table className="bg-white border border-slate-100">
+      <table className="bg-white w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
             <th className="py-2 px-4  ">No Delivery</th>
             <th className="py-2 px-4  ">Date</th>
             <th className="py-2 px-4  ">Outlet Name</th>
-            <th className="py-2 px-4  ">Owner Name</th>
-            <th className="py-2 px-4  ">Address</th>
+            <th className="py-2 px-4  ">Price</th>
             <th className="py-2 px-4  ">Type</th>
-            <th className="py-2 px-4  ">No Telp</th>
             <th className="py-2 px-4">Status</th>
             <th className="py-2 px-4"></th>
           </tr>
@@ -59,18 +92,16 @@ const TableDelivery = () => {
         <tbody>
           {filtertableDelivery.map((item) => (
             <tr className="text-left text-sm  text-slate-500" key={item.id}>
-              <td className="py-2 px-4">{item.delivery}</td>
-              <td className="py-2 px-4">{item.date}</td>
-              <td className="py-2 px-4">{item.outlet}</td>
-              <td className="py-2 px-4">{item.owner}</td>
-              <td className="py-2 px-4">{item.place}</td>
-              <td className="py-2 px-4">{item.type}</td>
-              <td className="py-2 px-4">{item.no}</td>
-              <td className="py-2 px-4">{item.info}</td>
+              <td className="py-2 px-4">{item.to_id}</td>
+              <td className="py-2 px-4">{item.date_send ? moment(new Date(item.date_send.epoch_time * 1000)).format('YYYY-MM-DD'):''}</td>
+              <td className="py-2 px-4">{item.to_name}</td>
+              <td className="py-2 px-4">{item.price}</td>
+              <td className="py-2 px-4">{dataType[item.type]}</td>
+              <td className="py-2 px-4">{dataStatus[item.status]}</td>
               <td className="py-2 px-4">
                 <div className="relative inline-block">
                   <div
-                    onClick={() => setDropdownItemId(item.id)}
+                    onClick={() => handleDropdownChange(item.id, "edit")}
                     className="cursor-pointer"
                   >
                     <HiOutlineDotsHorizontal className="w-4 h-4" />
@@ -90,13 +121,13 @@ const TableDelivery = () => {
                         >
                           Edit
                         </Link>
-                        <Link
+                        <button
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
                           role="menuitem"
-                          href={`/delivery/detail`}
+                          onClick={() => handleViewDetail(item.id)}
                         >
                           View Detail
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   )}

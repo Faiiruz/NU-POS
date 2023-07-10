@@ -6,24 +6,28 @@ import {
   categoryOptions,
   levelOptions,
 } from "../constant/table-data";
+import ProductRepository from "@/repositories/ProductRepository";
 
 const Form = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [productData, setProductData] = useState([])
 
-  const [formData, setFormData] = useState({
-    sku: "",
-    product: "",
-    category: "",
-    image: "",
-    barcode: "",
-    konsinyasi: "",
-    price1: "",
-    price2: "",
-    level: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   sku: "",
+  //   product: "",
+  //   category: "",
+  //   image: "",
+  //   barcode: "",
+  //   konsinyasi: "",
+  //   price1: "",
+  //   price2: "",
+  //   level: "",
+  // });
 
   const [previewImage, setPreviewImage] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedChildCategory, setSelectedChildCategory] = useState("");
 
   useEffect(() => {
     // Temukan data produk berdasarkan id
@@ -34,6 +38,8 @@ const Form = () => {
     if (selectedProduct) {
       setFormData(selectedProduct);
       setPreviewImage(selectedProduct.image);
+      setSelectedCategory(selectedProduct.category);
+      setSelectedChildCategory(selectedProduct.childCategory || "");
     }
   }, [id]);
 
@@ -70,9 +76,20 @@ const Form = () => {
 
   const handleCategoryChange = (e) => {
     const { value } = e.target;
+    setSelectedCategory(value);
+    setSelectedChildCategory("");
     setFormData((prevFormData) => ({
       ...prevFormData,
       category: value,
+    }));
+  };
+
+  const handleChildCategoryChange = (e) => {
+    const { value } = e.target;
+    setSelectedChildCategory(value);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      childCategory: value,
     }));
   };
 
@@ -84,29 +101,31 @@ const Form = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const AddProductData = tableProduct.map((product) => {
-      if (product.id === Number(id)) {
-        return {
-          ...product,
-          ...formData,
-        };
-      }
-      return product;
-    });
-
-    // Simulasikan penyimpanan data produk yang diperbarui
-    // bisa ke database atau penyimpanan lokal seperti localStorage
-    // disini kita hanya akan menyimpan dalam variabel productData
-    // pastikan Anda melakukan penyimpanan yang sesuai dengan kebutuhan aplikasi Anda
-    // atau gunakan state management seperti Redux untuk mengelola data
-    // untuk keperluan simulasi, buat variabel lokal dan jangan ubah variabel tableProduct
-    const AddTableProduct = [...AddProductData];
-
-    // Redirect ke halaman produk setelah berhasil mengupdate
-    router.push("/product");
+    try{
+        let token = localStorage.getItem("xa");
+        let dataToken = JSON.parse(token);
+        ProductRepository.postProduct({ xa: dataToken }, 
+        data, {
+          name: "Minuman Non-Alkohol",
+          sku: "ZG011AQA",
+          barcode: "CBA-5678",
+          category: 20,
+          category_name: "Aqua",
+          volume: 700,
+          volume_unit: "ML",
+          unit: "GLASS",
+          status: 1,
+          konsinyasi: 1
+  })
+        .then((data) => {
+          setProductData(data);
+          console.log(data);
+        });
+      } catch (error) {
+        console.error(error);
+      } 
   };
 
   return (
@@ -123,7 +142,7 @@ const Form = () => {
                 type="text"
                 id="sku"
                 name="sku"
-                value={formData.sku}
+                value={productData.sku}
                 onChange={handleInputChange}
               />
             </div>
@@ -136,7 +155,7 @@ const Form = () => {
                 type="text"
                 id="product"
                 name="product"
-                value={formData.product}
+                value={productData.product}
                 onChange={handleInputChange}
               />
             </div>
@@ -151,26 +170,43 @@ const Form = () => {
                 className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
                 id="category"
                 name="category"
-                value={formData.category}
+                value={selectedCategory}
                 onChange={handleCategoryChange}
               >
                 <option value="">-- Pilih Category --</option>
                 {categoryOptions.map((option) => (
-                  <optgroup key={option.value} label={option.label}>
-                    {option.children && option.children.length > 0
-                      ? option.children.map((childOption) => (
-                          <option
-                            key={childOption.value}
-                            value={childOption.value}
-                          >
-                            {childOption.label}
-                          </option>
-                        ))
-                      : null}
-                  </optgroup>
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
                 ))}
               </select>
             </div>
+            {selectedCategory &&
+              categoryOptions.find(
+                (option) => option.value === selectedCategory
+              )?.children && (
+                <div className="mb-4">
+                  <select
+                    className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+                    id="childCategory"
+                    name="childCategory"
+                    value={selectedChildCategory}
+                    onChange={handleChildCategoryChange}
+                  >
+                    <option value="">-- Pilih Child Category --</option>
+                    {categoryOptions
+                      .find((option) => option.value === selectedCategory)
+                      ?.children.map((childOption) => (
+                        <option
+                          key={childOption.value}
+                          value={childOption.value}
+                        >
+                          {childOption.label}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              )}
             <div className="mb-4">
               <label className="block mb-2 text-sm font-bold" htmlFor="image">
                 Image:
@@ -203,7 +239,7 @@ const Form = () => {
                 type="text"
                 id="barcode"
                 name="barcode"
-                value={formData.barcode}
+                value={productData.barcode}
                 onChange={handleInputChange}
               />
             </div>
@@ -224,7 +260,7 @@ const Form = () => {
                 className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
                 id="konsinyasi"
                 name="konsinyasi"
-                value={formData.konsinyasi}
+                value={productData.konsinyasi}
                 onChange={handleKonsinyasiChange}
               >
                 <option value="">-- Pilih Konsinyasi --</option>
@@ -244,7 +280,7 @@ const Form = () => {
                 type="text"
                 id="price1"
                 name="price1"
-                value={formData.price1}
+                value={productData.price1}
                 onChange={handleInputChange}
               />
             </div>
@@ -257,7 +293,7 @@ const Form = () => {
                 type="text"
                 id="price2"
                 name="price2"
-                value={formData.price2}
+                value={productData.price2}
                 onChange={handleInputChange}
               />
             </div>
@@ -269,7 +305,7 @@ const Form = () => {
                 className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
                 id="level"
                 name="level"
-                value={formData.level}
+                value={productData.level}
                 onChange={handleLevelChange}
               >
                 <option value="">-- Pilih Level --</option>

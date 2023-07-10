@@ -116,9 +116,9 @@ const Dropdown = () => {
 
   const renderPaymentMethods = () => {
     return (
-      <div className="mt-4 space-y-2">
+      <div className="mt-4 flex flex-col space-y-2">
         <p>Pilih Metode Pembayaran:</p>
-        <div className="flex items-center">
+        <div className="items-center">
           <input
             className="mr-4"
             type="checkbox"
@@ -137,7 +137,7 @@ const Dropdown = () => {
             />
           )}
         </div>
-        <div className="flex items-center">
+        <div className="items-center">
           <input
             className="mr-4"
             type="checkbox"
@@ -156,7 +156,7 @@ const Dropdown = () => {
             />
           )}
         </div>
-        <div className="flex items-center">
+        <div className="items-center">
           <input
             className="mr-4"
             type="checkbox"
