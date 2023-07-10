@@ -6,9 +6,9 @@ import { useEffect } from "react";
 import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
 
-const product = () => {
+const Product = () => {
   const crumbs = [{ label: "Product", url: "/product" }];
-  const router = useRouter();
+  const Router = useRouter();
 
   useEffect(() => {
     try {
@@ -19,13 +19,13 @@ const product = () => {
         param: "user",
       }).then((data) => {
         if ("status" in data) {
-          router.push("/login");
+          Router.push("/login");
         }
       });
     } catch (error) {
-      router.push("/login");
+      Router.push("/login");
     }
-  });
+  }, []);
 
   return (
     <Layout>
@@ -37,4 +37,4 @@ const product = () => {
   );
 };
 
-export default product;
+export default Product;

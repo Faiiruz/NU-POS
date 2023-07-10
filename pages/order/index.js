@@ -2,14 +2,13 @@ import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
 import { tableData } from "@/components/constant/table-data";
 import Layout from "@/components/layout/Layout";
 import Table from "@/components/table/Table";
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
 
-const order = () => {
+const Order = () => {
   const crumbs = [{ label: "Order", url: "/order" }];
-  const router = useRouter();
+  const Router = useRouter();
 
   useEffect(() => {
     try {
@@ -20,13 +19,13 @@ const order = () => {
         param: "user",
       }).then((data) => {
         if ("status" in data) {
-          router.push("/login");
+          Router.push("/login");
         }
       });
     } catch (error) {
-      router.push("/login");
+      Router.push("/login");
     }
-  });
+  }, []);
 
   return (
     <>
@@ -40,4 +39,4 @@ const order = () => {
   );
 };
 
-export default order;
+export default Order;

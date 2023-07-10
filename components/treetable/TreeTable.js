@@ -1,4 +1,4 @@
-import TreeNode from "@/pages/delivery-note-detail/[id]";
+import TreeNode from "./TreeNode";
 import { tableDelivery, treeTable } from "../constant/table-data";
 
 const TreeTable = () => {
