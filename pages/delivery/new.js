@@ -11,7 +11,7 @@ const newdelivery = () => {
 
   return (
     <Layout>
-      <div className="p-8">
+      <div className="p-8 ">
         <Breadcrumbs crumbs={crumbs} />
         <DropdownTreeTable />
       </div>

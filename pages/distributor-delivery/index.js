@@ -1,11 +1,12 @@
 import Layout from "@/components/layout/Layout";
-// import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
+import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
 import { useEffect } from "react";
 import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
 
-export default function Home() {
-  // const crumbs = [{ label: "Dashboard" }];
+const DeliveryDistributor = () => {
+  const crumbs = [{ label: "Delivery Distributor" }];
+
   const router = useRouter();
 
   useEffect(() => {
@@ -28,10 +29,12 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <div className="p-8 ">
-          <span className="text-sm text-sky-800">Dashboard</span>
+        <div className="p-8">
+          <Breadcrumbs crumbs={crumbs} />
         </div>
       </Layout>
     </>
   );
 }
+
+export default DeliveryDistributor

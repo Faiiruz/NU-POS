@@ -21,7 +21,6 @@ const detail = () => {
     <>
       <Layout>
         <div className="p-8">
-          <Back />
           <Breadcrumbs crumbs={crumbs} />
           {firstData && (
             <div className="flex flex-col space-y-1 tracking-wide mb-3">
@@ -35,9 +34,6 @@ const detail = () => {
           <div className="flex flex-col space-y-1 tracking-wide mb-3 mt-3">
             <span>
               Sub Total<a className="ml-4"></a>: {firstData.subtotal}
-            </span>
-            <span>
-              Discount<a className="ml-5"></a>: {firstData.discount1}
             </span>
             <a>Grand Total: {firstData.total}</a>
           </div>

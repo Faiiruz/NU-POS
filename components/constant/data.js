@@ -11,37 +11,70 @@ export const menuItems = [
     },
     {
       id: 2,
-      title: "Order",
+      title: "Pesanan",
       icon: "heroicons-outline:shopping-cart",
-      link: "/order",
       isHide: false,
+      submenu: [
+        {
+          id: 21,
+          title: "Pesanan Toko",
+          link: "/order",
+        },
+        {
+          id: 22,
+          title: "Pesanan Distributor",
+          link: "/distributor-order",
+        }
+      ]
     },
     {
       id: 3,
-      title: "Delivery Notes",
+      title: "Surat Jalan",
       icon: "heroicons:truck",
       isHide: true,
-      link: "/delivery",
+      submenu: [
+        {
+          id: 31,
+          title: "Surat Jalan Toko",
+          link: "/delivery",
+        },
+        {
+          id: 32,
+          title: "Surat Jalan Distributor",
+          link: "/distributor-delivery",
+        }
+      ]
     },
   
     {
       id: 4,
-      title: "Settlement",
+      title: "Pembayaran",
       icon: "heroicons:credit-card",
       isHide: true,
-      link: "/settlement",
+      submenu: [
+        {
+          id: 41,
+          title: "Pembayaran Toko",
+          link: "/settlement",
+        },
+        {
+          id: 42,
+          title: "Pembayaran Distributor",
+          link: "/distributor-settlement",
+        }
+      ]
     },
   
     {
       id: 5,
-      title: "Product",
+      title: "Produk",
       icon: "heroicons-outline:shopping-bag",
       isHide: true,
       link: "/product",
     },
     {
       id: 6,
-      title: "Store",
+      title: "Toko",
       icon: "heroicons-outline:building-storefront",
       isHide: true,
       link: "/store",

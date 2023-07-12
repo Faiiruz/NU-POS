@@ -144,10 +144,10 @@ const DropdownTreeTable = () => {
                     <td className="border p-2">{item.sisaBarang}</td>
                     <td className="border p-2">{item.unitSisa}</td>
                     <td className="border ">
-                      <input className="w-full h-full" type="text" />
+                      <input className="w-full h-full p-4" type="text" />
                     </td>
                     <td className="border ">
-                      <input className="w-full h-full" type="text" />
+                      <input className="w-full h-full p-4" type="text" />
                     </td>
                   </tr>
                 ))}
@@ -250,10 +250,10 @@ const TreeNode = ({ node }) => {
                   <td className="border p-2">{item.sisaBarang}</td>
                   <td className="border p-2">{item.unitSisa}</td>
                   <td className="border ">
-                    <input className="w-full h-full" type="text" />
+                    <input className="w-full h-full p-4" type="text" />
                   </td>
                   <td className="border ">
-                    <input className="w-full h-full" type="text" />
+                    <input className="w-full h-full p-4" type="text" />
                   </td>
                 </tr>
               ))}

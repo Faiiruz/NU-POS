@@ -126,15 +126,15 @@ const EditForm = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="p-6 bg-white rounded-md shadow-md">
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="sku">
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="sku">
               SKU:
             </label>
             <input
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               type="text"
               id="sku"
               name="sku"
@@ -142,12 +142,12 @@ const EditForm = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="product">
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="product">
               Product:
             </label>
             <input
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               type="text"
               id="product"
               name="product"
@@ -155,12 +155,12 @@ const EditForm = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="category">
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="category">
               Category:
             </label>
             <select
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               id="category"
               name="category"
               value={selectedCategory}
@@ -177,9 +177,12 @@ const EditForm = () => {
           {selectedCategory &&
             categoryOptions.find((option) => option.value === selectedCategory)
               ?.children && (
-              <div className="mb-4">
+              <div className="flex mb-4">
+                <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="childCategory">
+                  Child Category:
+                </label>
                 <select
-                  className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+                  className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
                   id="childCategory"
                   name="childCategory"
                   value={selectedChildCategory}
@@ -196,12 +199,12 @@ const EditForm = () => {
                 </select>
               </div>
             )}
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="image">
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="image">
               Image:
             </label>
             <input
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               type="file"
               id="image"
               name="image"
@@ -210,21 +213,22 @@ const EditForm = () => {
             />
           </div>
           {previewImage && (
-            <div className="mb-4">
+            <div className="flex mb-4">
+              <div className="w-1/4"></div>
               <img
                 src={previewImage}
                 alt="Preview"
-                className="w-full rounded-md"
+                className="w-3/4 rounded-md"
                 style={{ maxWidth: "200px" }}
               />
             </div>
           )}
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="barcode">
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="barcode">
               Barcode:
             </label>
             <input
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               type="text"
               id="barcode"
               name="barcode"
@@ -232,38 +236,35 @@ const EditForm = () => {
               onChange={handleInputChange}
             />
           </div>
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="konsinyasi">
+              Konsinyasi:
+            </label>
+            {konsinyasiOptions.map((option) => (
+              <div key={option.value} className="flex items-center pr-4">
+                <input
+                  type="radio"
+                  id={option.value}
+                  name="konsinyasi"
+                  value={option.value}
+                  checked={formData.konsinyasi === option.value}
+                  onChange={handleKonsinyasiChange}
+                />
+                <label htmlFor={option.value}>{option.label}</label>
+              </div>
+            ))}
+          </div>
         </form>
       </div>
       <div className="p-6 bg-white rounded-md shadow-md">
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              className="block mb-2 text-sm font-bold"
-              htmlFor="konsinyasi"
-            >
-              Konsinyasi:
-            </label>
-            <select
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
-              id="konsinyasi"
-              name="konsinyasi"
-              value={formData.konsinyasi}
-              onChange={handleKonsinyasiChange}
-            >
-              <option value="">-- Pilih Konsinyasi --</option>
-              {konsinyasiOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="price1">
+          
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="price1">
               Distributor Price:
             </label>
             <input
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               type="text"
               id="price1"
               name="price1"
@@ -271,12 +272,12 @@ const EditForm = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="price2">
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="price2">
               Selling Price:
             </label>
             <input
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               type="text"
               id="price2"
               name="price2"
@@ -284,12 +285,12 @@ const EditForm = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="level">
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="level">
               Level:
             </label>
             <select
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               id="level"
               name="level"
               value={formData.level}
@@ -303,12 +304,12 @@ const EditForm = () => {
               ))}
             </select>
           </div>
-          <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold" htmlFor="info">
+          <div className="flex mb-4">
+            <label className="w-1/4 text-right pr-4 text-sm font-bold" htmlFor="info">
               Status:
             </label>
             <input
-              className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-none"
               type="text"
               id="info"
               name="info"

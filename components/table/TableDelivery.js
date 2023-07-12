@@ -63,29 +63,31 @@ const TableDelivery = () => {
   return (
     <div className="p-6 bg-white rounded-md shadow-md">
       <div className="flex justify-between">
+        <div className="w-1/2">
         <input
-          className="border p-1 rounded mb-4 px-2"
+          className="border p-1 rounded mb-4 px-2 w-full"
           type="text"
-          placeholder="Search"
+          placeholder="Cari Berdasarkan No.Surat Jalan, Tanggal, dan Nama Toko"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+        </div>
         <button
           onClick={handleAddDelivery}
           className="flex items-center px-4 py-2 mb-4 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
         >
           <AiOutlinePlus className="mr-2" />
-          Create Delivery
+          Buat Surat Jalan
         </button>
       </div>
       <table className="bg-white w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
-            <th className="py-2 px-4  ">No Delivery</th>
-            <th className="py-2 px-4  ">Date</th>
-            <th className="py-2 px-4  ">Outlet Name</th>
-            <th className="py-2 px-4  ">Price</th>
-            <th className="py-2 px-4  ">Type</th>
+            <th className="py-2 px-4  ">No Surat Jalan</th>
+            <th className="py-2 px-4  ">Tanggal</th>
+            <th className="py-2 px-4  ">Nama Toko</th>
+            <th className="py-2 px-4  ">Harga</th>
+            <th className="py-2 px-4  ">Tipe</th>
             <th className="py-2 px-4">Status</th>
             <th className="py-2 px-4"></th>
           </tr>
@@ -123,11 +125,11 @@ const TableDelivery = () => {
                           Edit
                         </Link>
                         <button
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
                           role="menuitem"
                           onClick={() => handleViewDetail(item.id)}
                         >
-                          View Detail
+                          Lihat Detail
                         </button>
                       </div>
                     </div>

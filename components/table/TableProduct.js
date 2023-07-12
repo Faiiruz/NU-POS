@@ -13,20 +13,29 @@ const TableProduct = () => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const router = useRouter();
-  const [productData, setProductData] = useState([])
-  const [dataStatus, isSetStatus] = useState({1: "Avaliable", 2: "Discontinue"})
-  const [dataLevel, isSetLeve] = useState({1: "Owner" , 2: "Pusat", 4: "Distributor", 8:"Store"})
-  const [dataKonsinyasi, isSetKonsinyasi] = useState({1: "Non-Konsinyasi" , 2: "Konsinyasi"})
-
+  const [productData, setProductData] = useState([]);
+  const [dataStatus, isSetStatus] = useState({
+    1: "Avaliable",
+    2: "Discontinue",
+  });
+  const [dataLevel, isSetLeve] = useState({
+    1: "Owner",
+    2: "Pusat",
+    4: "Distributor",
+    8: "Store",
+  });
+  const [dataKonsinyasi, isSetKonsinyasi] = useState({
+    1: "Non-Konsinyasi",
+    2: "Konsinyasi",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let token = localStorage.getItem("xa");
         let dataToken = JSON.parse(token);
-        ProductRepository.getProduct({ XA: dataToken })
-        .then((data) => {
-          setProductData(data['data']);
+        ProductRepository.getProduct({ XA: dataToken }).then((data) => {
+          setProductData(data["data"]);
           console.log(data);
         });
       } catch (error) {
@@ -94,65 +103,67 @@ const TableProduct = () => {
 
   return (
     <div className="p-6 bg-white rounded-md shadow-md">
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
+        <div className="w-1/2">
         <input
-          className="border px-2 rounded mb-4"
+          className="border px-2 rounded mb-4 w-full "
           type="text"
-          placeholder="Search"
+          placeholder="Cari Berdasarkan SKU, Nama Product, dan Nama Kategori"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+        </div>
         <button
           onClick={handleAddNew}
           className="flex items-center px-4 py-2 mb-4 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
         >
           <AiOutlinePlus className="mr-2" />
-          Add Product
+          Tambahkan Produk
         </button>
       </div>
-      <table className="bg-white">
+      <table className="bg-white w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
-            <th className="py-2 px-4   w-1/5">SKU</th>
-            <th className="py-2 px-4   w-1/5">Product Name</th>
-            {/* <th className="py-2 px-4   w-1/5">Category</th>
-            <th className="py-2 px-4   w-1/5">Image</th> */}
-            <th className="py-2 px-4   w-1/5">Category</th>
-            <th className="py-2 px-4   w-1/5">Konsinyasi</th>
-            <th className="py-2 px-4   w-1/5">Distributor Price</th>
-            <th className="py-2 px-4   w-1/5">Selling Price</th>
-            <th className="py-2 px-4   w-1/5">Level</th>
-            <th className="py-2 px-4   w-1/5">Status</th>
+            <th className="py-2 px-4   ">SKU</th>
+            <th className="py-2 px-4   ">Nama Produk</th>
+            {/* <th className="py-2 px-4   ">Category</th>
+            <th className="py-2 px-4   ">Image</th> */}
+            <th className="py-2 px-4   ">Kategori</th>
+            <th className="py-2 px-4   ">Konsinyasi</th>
+            <th className="py-2 px-4   ">Harga Distributor</th>
+            <th className="py-2 px-4   ">Harga Toko</th>
+            <th className="py-2 px-4   ">Level</th>
+            <th className="py-2 px-4   ">Status</th>
             <th className="py-2 px-4"></th>
           </tr>
         </thead>
         <tbody>
           {paginatedData.map((item) => (
             <tr key={item.id} className="text-sm text-slate-700">
-              <td className="py-2 px-4 w-1/5">{item.org_id}</td>
-              <td className="py-2 px-4 w-1/5">{item.name}</td>
-              <td className="py-2 px-4 w-1/5">{item.category_name}</td>
-              {/* <td className="py-2 px-4 w-1/5">
+              <td className="py-2 px-4 ">{item.org_id}</td>
+              <td className="py-2 px-4 ">{item.name}</td>
+              <td className="py-2 px-4 ">{item.category_name}</td>
+              {/* <td className="py-2 px-4 ">
                 <img
                   src={item.image}
                   alt={item.product}
                   className="w-10 h-10"
                 />
               </td>
-              <td className="py-2 px-4 w-1/5">{item.barcode}</td> */}
-              <td className="py-2 px-4 w-1/5">{dataKonsinyasi[item.konsinyasi]}</td>
-              <td className="py-2 px-4 w-1/5">{item.distributor_price}</td>
-              <td className="py-2 px-4 w-1/5">{item.store_price}</td>
-              <td className="py-2 px-4 w-1/5">{dataLevel[item.level]}</td>
-              <td className="py-2 px-4 w-1/5">{dataStatus[item.status]}</td>
-              <td className="py-2 px-4 w-1/5">
-                <div className="relative inline-block">
-                  <div
-                    onClick={() => handleDropdownChange(item.id, "edit")}
-                    className="cursor-pointer"
-                  >
-                    <HiOutlineDotsHorizontal className="w-4 h-4" />
-                  </div>
+              <td className="py-2 px-4 ">{item.barcode}</td> */}
+              <td className="py-2 px-4 ">
+                {dataKonsinyasi[item.konsinyasi]}
+              </td>
+              <td className="py-2 px-4 ">{item.distributor_price}</td>
+              <td className="py-2 px-4 ">{item.store_price}</td>
+              <td className="py-2 px-4 ">{dataLevel[item.level]}</td>
+              <td className="py-2 px-4 ">{dataStatus[item.status]}</td>
+              <td className="py-2 px-4 ">
+                <div
+                  onClick={() => handleDropdownChange(item.id, "edit")}
+                  className="relative cursor-pointer inline-block"
+                >
+                  <HiOutlineDotsHorizontal className="w-4 h-4" />
                   {dropdownItemId === item.id && (
                     <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                       <div
@@ -175,7 +186,7 @@ const TableProduct = () => {
                           className="block px-4 py-2 text-sm text-red-700 hover:bg-red-100 hover:text-red-900 cursor-pointer"
                           role="menuitem"
                         >
-                          Delete
+                          Hapus Produk
                         </div>
                       </div>
                     </div>

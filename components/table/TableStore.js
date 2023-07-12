@@ -65,27 +65,29 @@ const TableStore = () => {
   return (
     <div className="p-6 bg-white rounded-md shadow-md">
       <div className="flex justify-between">
+        <div className="w-1/2">
         <input
-          className="border px-2 rounded mb-4"
+          className="border px-2 rounded mb-4 w-full"
           type="text"
-          placeholder="Search"
+          placeholder="Cari Berdasarkan Nama Toko"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+        </div>
         <button
           onClick={handleAddStore}
           className="flex items-center px-4 py-2 mb-4 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
         >
           <AiOutlinePlus className="mr-2" />
-          Add Store
+          Tambah Toko
         </button>
       </div>
       <table className="bg-white w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
-            <th className="py-5 px-4">Name</th>
+            <th className="py-5 px-4">Nama Toko</th>
             <th className="py-5 px-4">No Telp</th>
-            <th className="py-5 px-4">Address</th>
+            <th className="py-5 px-4">Alamat</th>
             <th className="py-5 px-4"></th>
           </tr>
         </thead>

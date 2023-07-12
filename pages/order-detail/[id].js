@@ -11,11 +11,11 @@ const TableDetailOrder = () => {
   console.log(id);
   const [getDetail, setGetDetail] = useState([])
   const [detailOrder, setDetailOrder] = useState([])
-  const [setStatus, isSetStatus] = useState({1: "request", 2: "parsial", 4: "close"})
+  const [setStatus, isSetStatus] = useState({1: "Open", 2: "Parsial", 4: "Close"})
 
   const crumbs = [
     { label: "Order", url: "/order" },
-    { label: "Detail Order", url: "/order/detail" },
+    { label: "Detail Order", url: `/order-detail/${id}` },
   ];
 
   const handleGoBack = () => {
@@ -50,32 +50,45 @@ const TableDetailOrder = () => {
       <div className="p-8">
       <Breadcrumbs crumbs={crumbs} />
     <div className="p-6 bg-white rounded-md shadow-md">
-      {detailOrder && (
-        <div className="flex flex-col space-y-1 mb-3 tracking-wide ">
-          <a>Outlet: {detailOrder.org_name}</a>
-          {/* <a>Owner: {firstData.owner}</a> */}
-          <span>
-            Status<a className="ml-1"></a>: {setStatus[detailOrder.status]}
-          </span>
-          <span>
-            {console.log(detailOrder)}
-            Date<a className="ml-4"></a>: {detailOrder.date_request ? moment(new Date(detailOrder.date_request.epoch_time * 1000)).format('YYYY-MM-DD'):''}
-          </span>
-        </div>
-      )}
+    {detailOrder && (
+  <table className="tracking-wide text-left">
+    <tbody>
+      <tr>
+        <td className="font-semibold ">Nama Toko</td>
+        <td>:</td>
+        <td>{detailOrder.org_name}</td>
+      </tr>
+      <tr>
+        <td className="font-semibold ">Status</td>
+        <td>:</td>
+        <td>
+          <span className="text-red-500">{setStatus[detailOrder.status]}</span>
+        </td>
+      </tr>
+      <tr>
+        <td className="font-semibold ">Tanggal</td>
+        <td>:</td>
+        <td>
+          {detailOrder.date_request ? moment(new Date(detailOrder.date_request.epoch_time * 1000)).format('MMMM Do YYYY, h:mm a') : ''}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+)}
+
       <table className="w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
             <th className="py-2 px-4">SKU</th>
-            <th className="py-2 px-4">Product Name</th>
-            <th className="py-2 px-4">Category</th>
+            <th className="py-2 px-4">Nama Produk</th>
+            <th className="py-2 px-4">Kategori</th>
             {/* <th className="py-2 px-4">Price</th> */}
-            <th className="py-2 px-4">Quantity</th>
-            <th className="py-2 px-4">Quantity Recived</th>
-            <th className="py-2 px-4">Quantity Send</th>
+            <th className="py-2 px-4">Jumlah</th>
+            <th className="py-2 px-4">Jumlah Diterima</th>
+            <th className="py-2 px-4">Jumlah Diterima</th>
             <th className="py-2 px-4">Unit</th>
-            <th className="py-2 px-4">Volume</th>
-            <th className="py-2 px-4">Volume Unit</th>
+            <th className="py-2 px-4">Isi</th>
+            <th className="py-2 px-4">Unit isi</th>
           </tr>
         </thead>
         <tbody>
@@ -96,13 +109,15 @@ const TableDetailOrder = () => {
         </tbody>
       </table>
       <div className="flex justify-end mt-4">
-        <button
-          onClick={handleGoBack}
-          className="flex items-center px-4 py-2 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
-        >
-          Close Order
-        </button>
-      </div>
+            {detailOrder && detailOrder.status !== 4 && (
+              <button
+                onClick={handleGoBack}
+                className="flex items-center px-4 py-2 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+              >
+                Close Order
+              </button>
+            )}
+          </div>
     </div>
     </div>
     </Layout>

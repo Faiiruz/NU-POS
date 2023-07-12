@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
 
-export default function Home() {
+const Report = () => {
   const crumbs = [{ label: "Report" }];
 
   const router = useRouter();
@@ -36,3 +36,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Report

@@ -29,7 +29,7 @@ const Delivery = () => {
 
   return (
     <Layout>
-      <div className="p-8">
+      <div className="p-8 ">
         <Breadcrumbs crumbs={crumbs} />
         <TableDelivery />
       </div>

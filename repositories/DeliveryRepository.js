@@ -65,7 +65,7 @@ class DeliveryRepository {
   }
 
   async getDeliveryDetail(params, delivery_note_id) {
-    const reponse = await Repository.get(`${baseUrl}delivery-note-detail/${delivery_note_id}`, {
+    const reponse = await Repository.get(`${baseUrl}/delivery-note-detail/${delivery_note_id}`, {
       headers: params,
       contextType: "application/json",
       responseType: "arraybuffer",

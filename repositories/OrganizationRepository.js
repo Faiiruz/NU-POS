@@ -64,8 +64,6 @@ class OrganizationRepository {
     })
       .then((response) => {
         const data = cbor.decode(response.data);
-        console.log(data);
-        console.log("1234");
         return data;
       })
       .catch((error) => {
@@ -96,7 +94,7 @@ class OrganizationRepository {
   }
   async postCostumer(params) {
     const data = params.data;
-    const reponse = await Repository.post(`${baseUrl}/customer `, data, {
+    const reponse = await Repository.post(`${baseUrl}/customer`, data, {
       headers: {
         xa: params.xa,
       },

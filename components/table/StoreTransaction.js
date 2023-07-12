@@ -29,7 +29,7 @@ const StoreTransaction = () => {
               <td className="py-4 px-4">{item.no}</td>
               <td className="py-4 px-4">{item.date}</td>
               <td className="py-4 px-4">{item.subtotal}</td>
-              <td className="py-4 px-4">{item.discount}</td>
+              <td className="py-4 px-4">{item.discount1}</td>
               <td className="py-4 px-4">{item.total}</td>
               <td className="py-2 px-4">
                 <button

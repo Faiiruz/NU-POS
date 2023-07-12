@@ -715,8 +715,8 @@ export const provinces = [
 ];
 
 export const DropdownData = [
-  { label: "Item 1", value: "item1" },
-  { label: "Item 2", value: "item2" },
+  { label: "Oke Store", value: "item1" },
+  { label: "Sip Store", value: "item2" },
 ];
 
 export const TreeTableData = {

@@ -1,10 +1,10 @@
 import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
 import Layout from "@/components/layout/Layout";
-import TreeTable from "@/components/treetable/TreeTableSetlle";
 import React from "react";
 import { useEffect } from "react";
 import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
+import TreeSettle from "@/components/treetable/TreeSettle";
 
 const Settlement = () => {
   const crumbs = [{ label: "Settlement", url: "/settlement" }];
@@ -32,7 +32,7 @@ const Settlement = () => {
     <Layout>
       <div className="p-8">
         <Breadcrumbs crumbs={crumbs} />
-        <TreeTable />
+        <TreeSettle/>
       </div>
     </Layout>
   );

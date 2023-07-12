@@ -13,11 +13,10 @@ import OrganizationRepository from "@/repositories/OrganizationRepository";
 const DetailStore = () => {
   const router = useRouter();
   const id = router.query['id']
-  console.log(id);
   const [getDetail, setGetDetail] = useState([])
   const crumbs = [
     { label: "Store", url: "/store" },
-    { label: "Profile", url: "/store/detail" },
+    { label: "Profile", url: `/detail-organization/${id}` },
   ];
 
   useEffect(() => {
@@ -93,7 +92,7 @@ const DetailStore = () => {
               Province:
             </label>
             <a className="w-full ml-3 px-2 py-1   rounded-md focus:outline-none">
-              {getDetail.org_province}
+              {getDetail.org_province_name}
             </a>
           </div>
           <div className="mb-4">
@@ -101,23 +100,23 @@ const DetailStore = () => {
               Regency:
             </label>
             <a className="w-full ml-3 px-2 py-1   rounded-md focus:outline-none">
-              {getDetail.org_regency_city}
+              {getDetail.org_regency_city_name}
             </a>
           </div>
           <div className="mb-4">
-            <label className="ml-[30px] mb-2 text-sm font-bold" htmlFor="sku">
-              SubDisrict:
-            </label>
-            <a className="w-full ml-3 px-2 py-1   rounded-md focus:outline-none">
-              {getDetail.org_sub_district}
-            </a>
-          </div>
-          <div className="mb-4">
-            <label className="ml-[30px] mb-2 text-sm font-bold" htmlFor="sku">
+            <label className="ml-[53px] mb-2 text-sm font-bold" htmlFor="sku">
               Disrict:
             </label>
             <a className="w-full ml-3 px-2 py-1   rounded-md focus:outline-none">
-              {getDetail.org_district}
+              {getDetail.org_district_name}
+            </a>
+          </div>
+          <div className="mb-4">
+            <label className="ml-[25px] mb-2 text-sm font-bold" htmlFor="sku">
+              Sub Disrict:
+            </label>
+            <a className="w-full ml-3 px-2 py-1   rounded-md focus:outline-none">
+              {getDetail.org_sub_district_name}
             </a>
           </div>
           <div className="mb-4">

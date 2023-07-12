@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
 
-export default function Home() {
+const Master = () => {
   const crumbs = [{ label: "Master Data" }];
 
   const router = useRouter();
@@ -29,10 +29,12 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <div className="p-8">
+        <div className="p-8 ">
           <Breadcrumbs crumbs={crumbs} />
         </div>
       </Layout>
     </>
   );
 }
+
+export default Master
