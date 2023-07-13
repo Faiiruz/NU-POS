@@ -15,8 +15,8 @@ const DetailStore = () => {
   const id = router.query['id']
   const [getDetail, setGetDetail] = useState([])
   const crumbs = [
-    { label: "Store", url: "/store" },
-    { label: "Profile", url: `/detail-organization/${id}` },
+    { label: "Toko", url: "/store" },
+    { label: "Profil Toko", url: `/detail-organization/${id}` },
   ];
 
   useEffect(() => {

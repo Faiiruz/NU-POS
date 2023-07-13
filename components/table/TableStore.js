@@ -8,23 +8,23 @@ import {
 import { useRouter } from "next/router";
 import OrganizationRepository from "@/repositories/OrganizationRepository";
 
-
 const TableStore = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [organizationData, setOrganizationData] = useState([])
+  const [organizationData, setOrganizationData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let token = localStorage.getItem("xa");
         let dataToken = JSON.parse(token);
-        OrganizationRepository.getOrganization({ XA: dataToken })
-        .then((data) => {
-          setOrganizationData(data['data']);
-          console.log(data);
-        });
+        OrganizationRepository.getOrganization({ XA: dataToken }).then(
+          (data) => {
+            setOrganizationData(data["data"]);
+            console.log(data);
+          }
+        );
       } catch (error) {
         console.error(error);
       }
@@ -63,17 +63,15 @@ const TableStore = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md">
-      <div className="flex justify-between">
-        <div className="w-1/2">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+      <div className="flex gap-2">
         <input
-          className="border px-2 rounded mb-4 w-full"
+          className="border px-2 rounded mb-4 grow"
           type="text"
           placeholder="Cari Berdasarkan Nama Toko"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        </div>
         <button
           onClick={handleAddStore}
           className="flex items-center px-4 py-2 mb-4 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"

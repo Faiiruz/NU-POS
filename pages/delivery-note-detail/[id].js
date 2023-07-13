@@ -12,8 +12,8 @@ const TreeDetail = () => {
   const [detailData, setDetailData] = useState([]);
   const [setStatus, isSetStatus] = useState({ 1: "Open", 2: "Parsial", 4: "Close" });
   const crumbs = [
-    { label: "Delivery Notes", url: "/delivery" },
-    { label: "Detail Delivery Notes", url: `/delivery-note-detail/${id}` },
+    { label: "Surat Jalan Toko", url: "/delivery" },
+    { label: "Detail Surat Jalan Toko", url: `/delivery-note-detail/${id}` },
   ];
 
   useEffect(() => {
@@ -49,14 +49,14 @@ const TreeDetail = () => {
         <div className="p-6 bg-white rounded-md shadow-md">
           {detailData.map((item) => (
             <div key={item.id}>
-              <div className="w-full cursor-pointer mt-2" onClick={() => toggleExpand(item.id)}>
+              <div className="w-full flex cursor-pointer mt-2" onClick={() => toggleExpand(item.id)}>
               <span className={`pr-2 ${expandedItems.includes(item.id) ? "rotate-90" : "rotate-0"}`}>
                 {expandedItems.includes(item.id) ? "-" : "+"}
               </span>
-                <span className="py-1 px-10 font-bold">{item.no_order}</span>
-                <span className="py-1 px-10 font-bold">{item.totalQty}</span>
-                <span className="py-1 px-10 font-bold">{item.date_request ? moment(new Date(item.date_request.epoch_time * 1000)).format('YYYY-MM-DD h:mm') : ''}</span>
-                <span className="py-1 px-10 font-bold text-red-500">{setStatus[item.status]}</span>
+              <label className="flex flex-col font-bold">No Order<span className="py-1 text-slate-700">{item.no_order}</span></label>
+              <label className="flex flex-col px-10 font-bold">Jumlah total<span className="py-1 text-slate-700">{item.totalQty}</span></label>
+              <label className="flex flex-col px-10 font-bold">Tanggal<span className="py-1 text-slate-700">{item.date_request ? moment(new Date(item.date_request.epoch_time * 1000)).format('YYYY-MM-DD h:mm') : ''}</span></label>
+              <label className="flex flex-col px-10 font-bold">Status<span className="py-1 text-green-500">{setStatus[item.status]}</span></label>
               </div>
               {expandedItems.includes(item.id) && (
                 <div className="ml-12 mt-1">

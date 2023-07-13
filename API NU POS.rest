@@ -163,7 +163,7 @@ XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmN
 ### POST ORGANIZATION
 POST https://pos.ipm.id/service/_organization HTTP/1.1
 content-type: application/cbor
-XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXB1c2F0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.klFv9-WHt1oAkMDwoPyIMDF45G3lV6jNcbACqIn6W34
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udWRpc3RyaWJ1dG9yQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiYTY1ZjA4NDhhOTYyOTZkNDI2OWRlMmE4ZmZmNGFlYmY3NWI0OGY1ZSJ9.KiynJN3UXUl82UgJQcKZz9k693DvMa_4vEWs5HQGZ4E
 
 # insert org distributor
 {
@@ -511,3 +511,11 @@ content-type: application/cbor
 XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udXN0b3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTY1NTVkODJiZjUwZDIyNjQxZDIxYjQ5NTE2MjY1MWJkNmYwZWNlOSJ9.GjpqsSKvM42ITnOmAzBqA86qjQuuEUgH-BOFvVke8X0
 
 ### END SECTION SETTLEMENT ###
+
+### GET REGION
+GET https://pos.ipm.id/service/get_region/1/123 HTTP/1.1
+# https://pos.ipm.id/service/get_region/:type/:id
+#1 province, 2 kabupaten, 3 kecamatan, 4 desa
+# jika get province, :id asal saja
+content-type: application/cbor
+XA: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5udWRpc3RyaWJ1dG9yQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiYTY1ZjA4NDhhOTYyOTZkNDI2OWRlMmE4ZmZmNGFlYmY3NWI0OGY1ZSJ9.KiynJN3UXUl82UgJQcKZz9k693DvMa_4vEWs5HQGZ4E

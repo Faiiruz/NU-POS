@@ -57,11 +57,14 @@ class OrganizationRepository {
     return reponse;
   }
   async getDetailOrganization(params, store_id) {
-    const reponse = await Repository.get(`${baseUrl}/_organization/${store_id}`, {
-      headers: params,
-      contextType: "application/json",
-      responseType: "arraybuffer",
-    })
+    const reponse = await Repository.get(
+      `${baseUrl}/_organization/${store_id}`,
+      {
+        headers: params,
+        contextType: "application/json",
+        responseType: "arraybuffer",
+      }
+    )
       .then((response) => {
         const data = cbor.decode(response.data);
         return data;
@@ -147,8 +150,8 @@ class OrganizationRepository {
     return reponse;
   }
   //region
-  async getRegion(params) {
-    const reponse = await Repository.get(`${baseUrl}/get_region/1/123`, {
+  async getRegion(params, region_id, sub_type) {
+    const reponse = await Repository.get(`${baseUrl}/get_region/${region_id}/${sub_type}`, {
       headers: params,
       contextType: "application/json",
       responseType: "arraybuffer",

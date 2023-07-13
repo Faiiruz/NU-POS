@@ -6,8 +6,8 @@ import React from "react";
 
 const newStore = () => {
   const crumbs = [
-    { label: "Store", url: "/store" },
-    { label: "Add New Store", url: "/store/new" },
+    { label: "Toko", url: "/store" },
+    { label: "Tambah Toko", url: "/store/new" },
   ];
   return (
     <>

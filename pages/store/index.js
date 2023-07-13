@@ -7,7 +7,7 @@ import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
 
 const Store = () => {
-  const crumbs = [{ label: "Store", url: "/store" }];
+  const crumbs = [{ label: "Toko", url: "/store" }];
 
   const Router = useRouter();
 

@@ -5,8 +5,8 @@ import React from "react";
 
 const newsettlement = () => {
   const crumbs = [
-    { label: "Settlement", url: "/settlement" },
-    { label: "Create Settlement", url: "/settlement/new" },
+    { label: "Pembayaran Toko", url: "/settlement" },
+    { label: "Buat Pembayaran Toko", url: "/settlement/new" },
   ];
   return (
     <Layout>

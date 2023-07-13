@@ -6,8 +6,8 @@ import React from "react";
 
 const edit = () => {
   const crumbs = [
-    { label: "Product", url: "/product" },
-    { label: "Edit Product", url: "/product/edit" },
+    { label: "Produk", url: "/product" },
+    { label: "Edit Produk", url: "/product/edit" },
   ];
   return (
     <Layout>

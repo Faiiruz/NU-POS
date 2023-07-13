@@ -7,7 +7,7 @@ import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
 
 const Order = () => {
-  const crumbs = [{ label: "Order", url: "/order" }];
+  const crumbs = [{ label: "Pesanan Toko", url: "/order" }];
   const Router = useRouter();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Order = () => {
       <Layout>
         <div className="p-8">
           <Breadcrumbs crumbs={crumbs} />
-          <Table/>
+          <Table />
         </div>
       </Layout>
     </>

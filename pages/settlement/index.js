@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import TreeSettle from "@/components/treetable/TreeSettle";
 
 const Settlement = () => {
-  const crumbs = [{ label: "Settlement", url: "/settlement" }];
+  const crumbs = [{ label: "Pembayaran Toko", url: "/settlement" }];
 
   const Router = useRouter();
 

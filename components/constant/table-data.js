@@ -672,17 +672,49 @@ export const provinces = [
     regencies: [
       {
         name: "Jakarta Pusat",
-        subdistricts: [
-          { name: "Gambir", postalCode: "10110" },
-          { name: "Sawah Besar", postalCode: "10710" },
+        districts: [
+          {
+            name: "Gambir",
+            subdisrict: [
+              {
+                name: "Pasar Gambir",
+                postalCode: "10110",
+              },
+            ],
+          },
+          {
+            name: "Sawah Besar",
+            subdisrict: [
+              {
+                name: "Pasar Besar",
+                postalCode: "10178",
+              },
+            ],
+          },
           // Daftar kecamatan lainnya di Jakarta Pusat
         ],
       },
       {
         name: "Jakarta Selatan",
-        subdistricts: [
-          { name: "Pancoran", postalCode: "12740" },
-          { name: "Tebet", postalCode: "12810" },
+        districts: [
+          {
+            name: "Pancoran",
+            subdisrict: [
+              {
+                name: "Pasar Gambir",
+                postalCode: "10110",
+              },
+            ],
+          },
+          {
+            name: "Tebet",
+            subdisrict: [
+              {
+                name: "Pasar Gambir",
+                postalCode: "10110",
+              },
+            ],
+          },
           // Daftar kecamatan lainnya di Jakarta Selatan
         ],
       },
@@ -694,17 +726,49 @@ export const provinces = [
     regencies: [
       {
         name: "Bandung",
-        subdistricts: [
-          { name: "Bandung Kulon", postalCode: "40211" },
-          { name: "Astanaanyar", postalCode: "40115" },
+        districts: [
+          {
+            name: "Bandung Kulon",
+            subdisrict: [
+              {
+                name: "Pasar Gambir",
+                postalCode: "10110",
+              },
+            ],
+          },
+          {
+            name: "Astanaanyar",
+            subdisrict: [
+              {
+                name: "Pasar Gambir",
+                postalCode: "10110",
+              },
+            ],
+          },
           // Daftar kecamatan lainnya di Bandung
         ],
       },
       {
         name: "Bogor",
         subdistricts: [
-          { name: "Bogor Selatan", postalCode: "16132" },
-          { name: "Bogor Barat", postalCode: "16111" },
+          {
+            name: "Bogor Selatan",
+            subdisrict: [
+              {
+                name: "Pasar Gambir",
+                postalCode: "10110",
+              },
+            ],
+          },
+          {
+            name: "Bogor Barat",
+            subdisrict: [
+              {
+                name: "Pasar Gambir",
+                postalCode: "10110",
+              },
+            ],
+          },
           // Daftar kecamatan lainnya di Bogor
         ],
       },

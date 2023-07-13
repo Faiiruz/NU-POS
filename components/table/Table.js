@@ -9,16 +9,19 @@ const Table = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
   const [orderData, setOrderData] = useState([]);
-  const [dataStatus, isSetStatus] = useState({1: "Open", 2: "Parsial", 4: "Close"})
+  const [dataStatus, isSetStatus] = useState({
+    1: "Open",
+    2: "Parsial",
+    4: "Close",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let token = localStorage.getItem("xa");
         let dataToken = JSON.parse(token);
-        OrderRepository.getOrder({ XA: dataToken }, 1)
-        .then((data) => {
-          setOrderData(data['data']);
+        OrderRepository.getOrder({ XA: dataToken }, 1).then((data) => {
+          setOrderData(data["data"]);
           console.log(data);
         });
       } catch (error) {
@@ -55,9 +58,9 @@ const Table = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen">
       <input
-        className="border p-1 px-2 rounded mb-4 w-1/2"
+        className="border p-1 px-2 rounded mb-4 w-full"
         type="text"
         placeholder="Cari Berdasarkan No.Order, Tanggal, dan Nama Toko"
         value={searchQuery}
@@ -80,12 +83,20 @@ const Table = () => {
           {paginatedData.map((item) => (
             <tr className="text-left text-slate-600 text-sm" key={item.id}>
               <td className="py-2 px-4">{item.no_order}</td>
-              <td className="py-2 px-4">{item.date_request ? moment(new Date(item.date_request.epoch_time * 1000)).format('YYYY-MM-DD h:mm a'):''}</td>
+              <td className="py-2 px-4">
+                {item.date_request
+                  ? moment(
+                      new Date(item.date_request.epoch_time * 1000)
+                    ).format("YYYY-MM-DD h:mm a")
+                  : ""}
+              </td>
               <td className="py-2 px-4">{item.org_name}</td>
               <td className="py-2 px-4">{item.totalQty}</td>
               <td className="py-2 px-4">{item.totalQty_receive}</td>
               <td className="py-2 px-4">{item.totalQty_send}</td>
-              <td className="py-2 px-4 text-red-500">{dataStatus[item.status]}</td>
+              <td className="py-2 px-4 text-green-500">
+                {dataStatus[item.status]}
+              </td>
               <td className="py-2 px-4">
                 <button
                   onClick={() => handleViewDetail(item.id)}

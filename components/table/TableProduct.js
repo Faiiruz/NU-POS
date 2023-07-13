@@ -102,17 +102,15 @@ const TableProduct = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md">
-      <div className="flex items-center justify-between">
-        <div className="w-1/2">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+      <div className="flex gap-2">
         <input
-          className="border px-2 rounded mb-4 w-full "
+          className="border px-2 rounded mb-4 grow"
           type="text"
           placeholder="Cari Berdasarkan SKU, Nama Product, dan Nama Kategori"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        </div>
         <button
           onClick={handleAddNew}
           className="flex items-center px-4 py-2 mb-4 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
@@ -151,11 +149,9 @@ const TableProduct = () => {
                 />
               </td>
               <td className="py-2 px-4 ">{item.barcode}</td> */}
-              <td className="py-2 px-4 ">
-                {dataKonsinyasi[item.konsinyasi]}
-              </td>
-              <td className="py-2 px-4 ">{item.distributor_price}</td>
-              <td className="py-2 px-4 ">{item.store_price}</td>
+              <td className="py-2 px-4 ">{dataKonsinyasi[item.konsinyasi]}</td>
+              <td className="py-2 px-4 ">Rp{item.distributor_price}</td>
+              <td className="py-2 px-4 ">Rp{item.store_price}</td>
               <td className="py-2 px-4 ">{dataLevel[item.level]}</td>
               <td className="py-2 px-4 ">{dataStatus[item.status]}</td>
               <td className="py-2 px-4 ">

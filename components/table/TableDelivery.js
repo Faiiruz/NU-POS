@@ -10,18 +10,20 @@ const TableDelivery = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
   const [dropdownItemId, setDropdownItemId] = useState(null);
-  const [OrderData, setOrderData] = useState([])
-  const [dataStatus, isSetStatus] = useState({1: "Send", 2: "Receive"})
-  const [dataType, isDataType] = useState({1: "Non-Konsinyasi", 2: "Konsinyasi"})
+  const [OrderData, setOrderData] = useState([]);
+  const [dataStatus, isSetStatus] = useState({ 1: "Send", 2: "Receive" });
+  const [dataType, isDataType] = useState({
+    1: "Non-Konsinyasi",
+    2: "Konsinyasi",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let token = localStorage.getItem("xa");
         let dataToken = JSON.parse(token);
-        DeliveryRepository.getDelivery({ XA: dataToken }, 1)
-        .then((data) => {
-          setOrderData(data['data']);
+        DeliveryRepository.getDelivery({ XA: dataToken }, 1).then((data) => {
+          setOrderData(data["data"]);
           console.log(data);
         });
       } catch (error) {
@@ -61,17 +63,15 @@ const TableDelivery = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md">
-      <div className="flex justify-between">
-        <div className="w-1/2">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+      <div className="flex gap-2">
         <input
-          className="border p-1 rounded mb-4 px-2 w-full"
+          className="border p-1 rounded mb-4 px-2 grow"
           type="text"
           placeholder="Cari Berdasarkan No.Surat Jalan, Tanggal, dan Nama Toko"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        </div>
         <button
           onClick={handleAddDelivery}
           className="flex items-center px-4 py-2 mb-4 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
@@ -96,9 +96,15 @@ const TableDelivery = () => {
           {filtertableDelivery.map((item) => (
             <tr className="text-left text-sm  text-slate-500" key={item.id}>
               <td className="py-2 px-4">{item.to_id}</td>
-              <td className="py-2 px-4">{item.date_send ? moment(new Date(item.date_send.epoch_time * 1000)).format('YYYY-MM-DD'):''}</td>
+              <td className="py-2 px-4">
+                {item.date_send
+                  ? moment(new Date(item.date_send.epoch_time * 1000)).format(
+                      "YYYY-MM-DD h:mm a"
+                    )
+                  : ""}
+              </td>
               <td className="py-2 px-4">{item.to_name}</td>
-              <td className="py-2 px-4">{item.price}</td>
+              <td className="py-2 px-4">Rp{item.price}</td>
               <td className="py-2 px-4">{dataType[item.type]}</td>
               <td className="py-2 px-4">{dataStatus[item.status]}</td>
               <td className="py-2 px-4">

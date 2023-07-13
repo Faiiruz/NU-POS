@@ -29,11 +29,11 @@ const MenuItem = ({ item, handleMenuClick }) => {
 
   return (
     <li className="rounded-lg">
-      <div className="flex items-center ">
+      <div className="flex items-center">
         <a
           href={item.link}
           className={`${
-            router.pathname === item.link ? "bg-slate-400 text-black" : ""
+            router.pathname === item.link ? "bg-slate-400 text-white" : ""
           } flex items-center hover:text-gray-300 text-sm w-full p-2 rounded-sm`}
           onClick={() => handleItemClick(item.id)}
         >
@@ -77,19 +77,20 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-white text-black border-r w-44 flex flex-col">
-      <div className="text-center">
-        <img src="/image/logo-nu.jpeg" alt="Logo NU" className="w-full"/>
+    <div className="bg-white text-black border-r w-44 flex flex-col 2xl:h-screen">
+      <div className="space-y-7 mt-3 p-1 ">
+        <img src="/image/logo-nu.jpeg" alt="Logo NU" className="w-full" />
+
+        <ul className="space-y-7 ">
+          {menuItems.map((item) => (
+            <MenuItem
+              key={item.id}
+              item={item}
+              handleMenuClick={handleMenuClick}
+            />
+          ))}
+        </ul>
       </div>
-      <ul className="space-y-7 mt-3 p-1">
-        {menuItems.map((item) => (
-          <MenuItem
-            key={item.id}
-            item={item}
-            handleMenuClick={handleMenuClick}
-          />
-        ))}
-      </ul>
     </div>
   );
 };

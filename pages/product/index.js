@@ -7,7 +7,7 @@ import AuthRepository from "@/repositories/AuthRepository";
 import { useRouter } from "next/router";
 
 const Product = () => {
-  const crumbs = [{ label: "Product", url: "/product" }];
+  const crumbs = [{ label: "Produk", url: "/product" }];
   const Router = useRouter();
 
   useEffect(() => {
