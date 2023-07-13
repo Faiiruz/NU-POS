@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SettlementRepository from "@/repositories/SettlementRepository";
 import { AiOutlinePlus } from "react-icons/ai";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useRouter } from "next/router";
 import moment from "moment";
 
@@ -50,7 +51,7 @@ const TreeSettle = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
       <div className="flex justify-between">
         <div className="w-1/2">
           <input
@@ -72,11 +73,11 @@ const TreeSettle = () => {
       {filtertableStore.map((item) => (
         <div
           key={item.id}
-          className="flex items-center cursor-pointer mt-2"
+          className="w-full flex items-center cursor-pointer mt-2"
           onClick={() => toggleExpand(item.id)}
         >
           <span className={`pr-2 ${expandedItems.includes(item.id)}`}>
-            {expandedItems.includes(item.id) ? "-" : "+"}
+          {expandedItems.includes(item.id) ? <FaAngleUp /> : <FaAngleDown />}
           </span>
           <label className="flex flex-col font-bold ">
             No Transaksi

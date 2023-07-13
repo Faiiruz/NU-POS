@@ -58,7 +58,7 @@ const Table = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
       <input
         className="border p-1 px-2 rounded mb-4 w-full"
         type="text"
@@ -69,35 +69,35 @@ const Table = () => {
       <table className="w-full">
         <thead>
           <tr className="text-md text-left text-slate-700">
-            <th className="py-1 px-4 ">No Order</th>
-            <th className="py-1 px-4 ">Tanggal</th>
-            <th className="py-1 px-4 ">Nama Toko</th>
-            <th className="py-1 px-4 ">Jumlah Total</th>
-            <th className="py-1 px-4 ">Jumlah Diterima</th>
-            <th className="py-1 px-4 ">Jumlah Dikirim</th>
-            <th className="py-1 px-4 ">Status</th>
-            <th className="py-1 px-4 "></th>
+            <th className="py-2 px-4 border-b">No Order</th>
+            <th className="py-2 px-4 border-b">Tanggal</th>
+            <th className="py-2 px-4 border-b">Nama Toko</th>
+            <th className="py-2 px-4 border-b">Jumlah Total</th>
+            <th className="py-2 px-4 border-b">Jumlah Diterima</th>
+            <th className="py-2 px-4 border-b">Jumlah Dikirim</th>
+            <th className="py-2 px-4 border-b">Status</th>
+            <th className="py-2 px-4 border-b"></th>
           </tr>
         </thead>
         <tbody>
           {paginatedData.map((item) => (
             <tr className="text-left text-slate-600 text-sm" key={item.id}>
-              <td className="py-2 px-4">{item.no_order}</td>
-              <td className="py-2 px-4">
+              <td className="py-2 px-4 border-b">{item.no_order}</td>
+              <td className="py-2 px-4 border-b">
                 {item.date_request
                   ? moment(
                       new Date(item.date_request.epoch_time * 1000)
                     ).format("YYYY-MM-DD h:mm a")
                   : ""}
               </td>
-              <td className="py-2 px-4">{item.org_name}</td>
-              <td className="py-2 px-4">{item.totalQty}</td>
-              <td className="py-2 px-4">{item.totalQty_receive}</td>
-              <td className="py-2 px-4">{item.totalQty_send}</td>
-              <td className="py-2 px-4 text-green-500">
+              <td className="py-2 px-4 border-b">{item.org_name}</td>
+              <td className="py-2 px-4 border-b">{item.totalQty}</td>
+              <td className="py-2 px-4 border-b">{item.totalQty_receive}</td>
+              <td className="py-2 px-4 border-b">{item.totalQty_send}</td>
+              <td className="py-2 px-4 text-green-500 border-b">
                 {dataStatus[item.status]}
               </td>
-              <td className="py-2 px-4">
+              <td className="py-2 px-4 border-b">
                 <button
                   onClick={() => handleViewDetail(item.id)}
                   className="flex items-center justify-center"

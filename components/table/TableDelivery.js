@@ -63,7 +63,7 @@ const TableDelivery = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
       <div className="flex gap-2">
         <input
           className="border p-1 rounded mb-4 px-2 grow"
@@ -74,7 +74,7 @@ const TableDelivery = () => {
         />
         <button
           onClick={handleAddDelivery}
-          className="flex items-center px-4 py-2 mb-4 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+          className="flex items-center px-4 py-4 mb-4 border border-transparent rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
         >
           <AiOutlinePlus className="mr-2" />
           Buat Surat Jalan
@@ -83,31 +83,31 @@ const TableDelivery = () => {
       <table className="bg-white w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
-            <th className="py-2 px-4  ">No Surat Jalan</th>
-            <th className="py-2 px-4  ">Tanggal</th>
-            <th className="py-2 px-4  ">Nama Toko</th>
-            <th className="py-2 px-4  ">Harga</th>
-            <th className="py-2 px-4  ">Tipe</th>
-            <th className="py-2 px-4">Status</th>
-            <th className="py-2 px-4"></th>
+            <th className="py-2 px-4 border-b">No Surat Jalan</th>
+            <th className="py-2 px-4 border-b">Tanggal</th>
+            <th className="py-2 px-4 border-b">Nama Toko</th>
+            <th className="py-2 px-4 border-b">Harga</th>
+            <th className="py-2 px-4 border-b">Tipe</th>
+            <th className="py-2 px-4 border-b">Status</th>
+            <th className="py-2 px-4 border-b"></th>
           </tr>
         </thead>
         <tbody>
           {filtertableDelivery.map((item) => (
             <tr className="text-left text-sm  text-slate-500" key={item.id}>
-              <td className="py-2 px-4">{item.to_id}</td>
-              <td className="py-2 px-4">
+              <td className="py-2 px-4 border-b">{item.to_id}</td>
+              <td className="py-2 px-4 border-b">
                 {item.date_send
                   ? moment(new Date(item.date_send.epoch_time * 1000)).format(
                       "YYYY-MM-DD h:mm a"
                     )
                   : ""}
               </td>
-              <td className="py-2 px-4">{item.to_name}</td>
-              <td className="py-2 px-4">Rp{item.price}</td>
-              <td className="py-2 px-4">{dataType[item.type]}</td>
-              <td className="py-2 px-4">{dataStatus[item.status]}</td>
-              <td className="py-2 px-4">
+              <td className="py-2 px-4 border-b">{item.to_name}</td>
+              <td className="py-2 px-4 border-b">Rp{item.price}</td>
+              <td className="py-2 px-4 border-b">{dataType[item.type]}</td>
+              <td className="py-2 px-4 border-b">{dataStatus[item.status]}</td>
+              <td className="py-4 px-4 border-b">
                 <div className="relative inline-block">
                   <div
                     onClick={() => handleDropdownChange(item.id, "edit")}
@@ -124,14 +124,14 @@ const TableDelivery = () => {
                         aria-labelledby="options-menu"
                       >
                         <Link
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                          className="block px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
                           role="menuitem"
                           href={`/delivery/edit`}
                         >
                           Edit
                         </Link>
                         <button
-                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                          className="block w-full text-left px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
                           role="menuitem"
                           onClick={() => handleViewDetail(item.id)}
                         >

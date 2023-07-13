@@ -67,7 +67,7 @@ const TableDistributor = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
       <div className="flex justify-between">
         <input
           className="border p-1 px-2 rounded mb-4 w-1/2"
@@ -87,14 +87,14 @@ const TableDistributor = () => {
       <table className="w-full">
         <thead>
           <tr className="text-md text-left text-slate-700">
-            <th className="py-1 px-4 ">No Order</th>
-            <th className="py-1 px-4 ">Tanggal</th>
+            <th className="py-2 px-4 ">No Order</th>
+            <th className="py-2 px-4 ">Tanggal</th>
             {/* <th className="py-1 px-4 ">Nama Toko</th>
             <th className="py-1 px-4 ">Jumlah Total</th>
             <th className="py-1 px-4 ">Jumlah Diterima</th>
             <th className="py-1 px-4 ">Jumlah Dikirim</th> */}
-            <th className="py-1 px-4 ">Status</th>
-            <th className="py-1 px-4 "></th>
+            <th className="py-2 px-4 ">Status</th>
+            <th className="py-2 px-4 "></th>
           </tr>
         </thead>
         <tbody>

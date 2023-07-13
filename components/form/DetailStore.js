@@ -28,7 +28,7 @@ const DetailStore = () => {
     router.push(`/store/detail/history`);
   };
   return (
-    <div className="p-6 bg-white rounded-md shadow-md">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
       {firstData && (
         <div>
           <div className="mb-4">

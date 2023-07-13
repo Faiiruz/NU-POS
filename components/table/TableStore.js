@@ -63,7 +63,7 @@ const TableStore = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
       <div className="flex gap-2">
         <input
           className="border px-2 rounded mb-4 grow"
@@ -83,19 +83,19 @@ const TableStore = () => {
       <table className="bg-white w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
-            <th className="py-5 px-4">Nama Toko</th>
-            <th className="py-5 px-4">No Telp</th>
-            <th className="py-5 px-4">Alamat</th>
-            <th className="py-5 px-4"></th>
+            <th className="py-2 px-2 border-b">Nama Toko</th>
+            <th className="py-2 px-2 border-b">No Telp</th>
+            <th className="py-2 px-2 border-b">Alamat</th>
+            <th className="py-2 px-2 border-b"></th>
           </tr>
         </thead>
         <tbody>
           {paginatedData.map((item) => (
             <tr className="text-sm text-slate-700" key={item.id}>
-              <td className="py-5 px-4">{item.org_name}</td>
-              <td className="py-5 px-4">{item.org_phone}</td>
-              <td className="py-5 px-4">{item.org_address}</td>
-              <td className="py-5 px-4">
+              <td className="py-2 px-2 border-b">{item.org_name}</td>
+              <td className="py-2 px-2 border-b">{item.org_phone}</td>
+              <td className="py-2 px-2 border-b">{item.org_address}</td>
+              <td className="py-2 px-2 border-b">
                 <button
                   onClick={() => handleViewDetail(item.id)}
                   className="flex items-center justify-center"

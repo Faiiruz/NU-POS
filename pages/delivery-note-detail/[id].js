@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Breadcrumbs from "@/components/breadcrumbs/BreadCrumbs";
 import moment from "moment";
 import { useRouter } from "next/router";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import DeliveryRepository from "@/repositories/DeliveryRepository";
 import Layout from "@/components/layout/Layout";
 
@@ -46,12 +47,12 @@ const TreeDetail = () => {
     <Layout>
       <div className="p-8">
       <Breadcrumbs crumbs={crumbs} />
-        <div className="p-6 bg-white rounded-md shadow-md">
+        <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
           {detailData.map((item) => (
             <div key={item.id}>
               <div className="w-full flex cursor-pointer mt-2" onClick={() => toggleExpand(item.id)}>
-              <span className={`pr-2 ${expandedItems.includes(item.id) ? "rotate-90" : "rotate-0"}`}>
-                {expandedItems.includes(item.id) ? "-" : "+"}
+              <span className={`pr-2 ${expandedItems.includes(item.id)}`}>
+                {expandedItems.includes(item.id) ? <FaAngleUp/> : <FaAngleDown/>}
               </span>
               <label className="flex flex-col font-bold">No Order<span className="py-1 text-slate-700">{item.no_order}</span></label>
               <label className="flex flex-col px-10 font-bold">Jumlah total<span className="py-1 text-slate-700">{item.totalQty}</span></label>
@@ -63,29 +64,29 @@ const TreeDetail = () => {
                   <table className="w-full text-left">
                     <thead>
                       <tr>
-                        <th className="py-1 px-4">SKU</th>
-                        <th className="py-1 px-4">Product Name</th>
-                        <th className="py-1 px-4">Category</th>
-                        <th className="py-2 px-4">Quantity</th>
-                        <th className="py-2 px-4">Quantity Recived</th>
-                        <th className="py-2 px-4">Quantity Send</th>
-                        <th className="py-2 px-4">Unit</th>
-                        <th className="py-2 px-4">Volume</th>
-                        <th className="py-2 px-4">Volume Unit</th>
+                        <th className="py-2 px-4 border-b">SKU</th>
+                        <th className="py-2 px-4 border-b">Product Name</th>
+                        <th className="py-2 px-4 border-b">Category</th>
+                        <th className="py-2 px-4 border-b">Quantity</th>
+                        <th className="py-2 px-4 border-b">Quantity Recived</th>
+                        <th className="py-2 px-4 border-b">Quantity Send</th>
+                        <th className="py-2 px-4 border-b">Unit</th>
+                        <th className="py-2 px-4 border-b">Volume</th>
+                        <th className="py-2 px-4 border-b">Volume Unit</th>
                       </tr>
                     </thead>
                     <tbody>
                       {item.detail_order.map((detail) => (
                         <tr key={detail.id}>
-                          <td className="py-1 px-4">{detail.product_id}</td>
-                          <td className="py-4 px-4">{detail.product_name}</td>
-                          <td className="py-4 px-4">{detail.category_name}</td>
-                          <td className="py-4 px-4">{detail.qty}</td>
-                          <td className="py-4 px-4">{detail.qty_receive}</td>
-                          <td className="py-4 px-4">{detail.qty_send}</td>
-                          <td className="py-4 px-4">{detail.unit}</td>
-                          <td className="py-4 px-4">{detail.volume}</td>
-                          <td className="py-4 px-4">{detail.volume_unit}</td>
+                          <td className="py-2 px-4 border-b">{detail.product_id}</td>
+                          <td className="py-2 px-4 border-b">{detail.product_name}</td>
+                          <td className="py-2 px-4 border-b">{detail.category_name}</td>
+                          <td className="py-2 px-4 border-b">{detail.qty}</td>
+                          <td className="py-2 px-4 border-b">{detail.qty_receive}</td>
+                          <td className="py-2 px-4 border-b">{detail.qty_send}</td>
+                          <td className="py-2 px-4 border-b">{detail.unit}</td>
+                          <td className="py-2 px-4 border-b">{detail.volume}</td>
+                          <td className="py-2 px-4 border-b">{detail.volume_unit}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -100,4 +101,5 @@ const TreeDetail = () => {
   );
 };
 
-export default TreeDetail;
+export default TreeDe2ail;
+ border-b

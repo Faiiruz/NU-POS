@@ -30,7 +30,7 @@ const StockStore = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
       <div className="flex justify-between">
         <input
           className="border px-2 rounded mb-4"
@@ -46,8 +46,8 @@ const StockStore = () => {
             <th className="py-2 px-4 border-b">SKU</th>
             <th className="py-2 px-4 border-b">Product Name</th>
             <th className="py-2 px-4 border-b">Category</th>
-            <th className="py-2 px-2 border-b">Image</th>
-            <th className="py-2 px-2 border-b">Barcode</th>
+            <th className="py-2 px-4 border-b">Image</th>
+            <th className="py-2 px-4 border-b">Barcode</th>
             <th className="py-2 px-4 border-b">Price</th>
             <th className="py-2 px-4 border-b">Level</th>
             <th className="py-2 px-4 border-b">Stock</th>
@@ -56,20 +56,20 @@ const StockStore = () => {
         <tbody>
           {paginatedData.map((item) => (
             <tr key={item.id} className="text-sm text-slate-700">
-              <td className="py-2 px-4">{item.sku}</td>
-              <td className="py-2 px-4">{item.product}</td>
-              <td className="py-2 px-4">{item.category}</td>
-              <td className="py-2 px-2">
+              <td className="py-2 px-4 border-b">{item.sku}</td>
+              <td className="py-2 px-4 border-b">{item.product}</td>
+              <td className="py-2 px-4 border-b">{item.category}</td>
+              <td className="py-2 px-4 border-b">
                 <img
                   src={item.image}
                   alt={item.product}
                   className="w-10 h-10"
                 />
               </td>
-              <td className="py-2 px-2">{item.barcode}</td>
-              <td className="py-2 px-4">{item.price2}</td>
-              <td className="py-2 px-4">{item.level}</td>
-              <td className="py-2 px-4">{item.stck}</td>
+              <td className="py-2 px-4 border-b" border-b>{item.barcode}</td>
+              <td className="py-2 px-4 border-b">{item.price2}</td>
+              <td className="py-2 px-4 border-b">{item.level}</td>
+              <td className="py-2 px-4 border-b">{item.stck}</td>
             </tr>
           ))}
         </tbody>

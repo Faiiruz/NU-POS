@@ -102,7 +102,7 @@ const TableProduct = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md h-screen">
+    <div className="p-6 bg-white rounded-md shadow-md h-screen 2xl:h-[700px]">
       <div className="flex gap-2">
         <input
           className="border px-2 rounded mb-4 grow"
@@ -122,25 +122,25 @@ const TableProduct = () => {
       <table className="bg-white w-full">
         <thead>
           <tr className="text-left text-md text-slate-700">
-            <th className="py-2 px-4   ">SKU</th>
-            <th className="py-2 px-4   ">Nama Produk</th>
+            <th className="py-2 px-4 border-b">SKU</th>
+            <th className="py-2 px-4 border-b">Nama Produk</th>
             {/* <th className="py-2 px-4   ">Category</th>
             <th className="py-2 px-4   ">Image</th> */}
-            <th className="py-2 px-4   ">Kategori</th>
-            <th className="py-2 px-4   ">Konsinyasi</th>
-            <th className="py-2 px-4   ">Harga Distributor</th>
-            <th className="py-2 px-4   ">Harga Toko</th>
-            <th className="py-2 px-4   ">Level</th>
-            <th className="py-2 px-4   ">Status</th>
-            <th className="py-2 px-4"></th>
+            <th className="py-2 px-4 border-b">Kategori</th>
+            <th className="py-2 px-4 border-b">Konsinyasi</th>
+            <th className="py-2 px-4 border-b">Harga Distributor</th>
+            <th className="py-2 px-4 border-b">Harga Toko</th>
+            <th className="py-2 px-4 border-b">Level</th>
+            <th className="py-2 px-4 border-b">Status</th>
+            <th className="py-2 px-4 border-b"></th>
           </tr>
         </thead>
         <tbody>
           {paginatedData.map((item) => (
             <tr key={item.id} className="text-sm text-slate-700">
-              <td className="py-2 px-4 ">{item.org_id}</td>
-              <td className="py-2 px-4 ">{item.name}</td>
-              <td className="py-2 px-4 ">{item.category_name}</td>
+              <td className="py-2 px-4 border-b">{item.org_id}</td>
+              <td className="py-2 px-4 border-b">{item.name}</td>
+              <td className="py-2 px-4 border-b">{item.category_name}</td>
               {/* <td className="py-2 px-4 ">
                 <img
                   src={item.image}
@@ -149,12 +149,12 @@ const TableProduct = () => {
                 />
               </td>
               <td className="py-2 px-4 ">{item.barcode}</td> */}
-              <td className="py-2 px-4 ">{dataKonsinyasi[item.konsinyasi]}</td>
-              <td className="py-2 px-4 ">Rp{item.distributor_price}</td>
-              <td className="py-2 px-4 ">Rp{item.store_price}</td>
-              <td className="py-2 px-4 ">{dataLevel[item.level]}</td>
-              <td className="py-2 px-4 ">{dataStatus[item.status]}</td>
-              <td className="py-2 px-4 ">
+              <td className="py-2 px-4 border-b">{dataKonsinyasi[item.konsinyasi]}</td>
+              <td className="py-2 px-4 border-b">Rp{item.distributor_price}</td>
+              <td className="py-2 px-4 border-b">Rp{item.store_price}</td>
+              <td className="py-2 px-4 border-b">{dataLevel[item.level]}</td>
+              <td className="py-2 px-4 border-b">{dataStatus[item.status]}</td>
+              <td className="py-2 px-4 border-b">
                 <div
                   onClick={() => handleDropdownChange(item.id, "edit")}
                   className="relative cursor-pointer inline-block"
