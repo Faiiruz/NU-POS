@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAppContext } from "../context/AppContext";
 import {
   AiOutlineEye,
   AiOutlineLeft,
@@ -14,34 +15,48 @@ const TableStore = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [organizationData, setOrganizationData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let token = localStorage.getItem("xa");
-        let dataToken = JSON.parse(token);
-        OrganizationRepository.getOrganization({ XA: dataToken }).then(
-          (data) => {
-            setOrganizationData(data["data"]);
-            console.log(data);
-          }
-        );
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const keyContext = 'tableStore'
+  const contextData = useAppContext(keyContext)
+  const {addContext, removeContext } = contextData
 
-    fetchData();
+  const fetchData = async () => {
+    try {
+      let token = localStorage.getItem("xa");
+      let dataToken = JSON.parse(token);
+      OrganizationRepository.getOrganization({ XA: dataToken }, 8).then(
+        (data) => {
+          setOrganizationData(data["data"]);
+          addContext(keyContext, data["data"])
+          console.log(data);
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    console.log(contextData);
+    console.log(contextData[keyContext]);
+    if(contextData[keyContext] == undefined || contextData[keyContext].length == 0){
+      console.log("43214");
+      fetchData();
+    } else {
+      // let newData = contextData[keyContext].unshift({'org_name': 'testing'})
+      // addContext(keyContext, newData)
+      setOrganizationData(contextData[keyContext]);
+    }
   }, []);
 
   const itemsPerPage = 5;
 
-  const filtertableStore = organizationData.filter((item) =>
-    item.org_name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const filtertableStore = organizationData.filter((item) =>
+  //   item.org_name.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
-  const totalPages = Math.ceil(filtertableStore.length / itemsPerPage);
+  const totalPages = Math.ceil(organizationData.length / itemsPerPage);
 
-  const paginatedData = filtertableStore.slice(
+  const paginatedData = organizationData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );

@@ -79,9 +79,15 @@ export const menuItems = [
       isHide: true,
       link: "/store",
     },
-  
     {
       id: 7,
+      title: "Distributor",
+      icon: "heroicons-outline:building-office",
+      isHide: true,
+      link: "/distributor"
+    },
+    {
+      id: 8,
       title: "Master Data",
       icon: "heroicons-outline:arrow-trending-up",
       isHide: true,
@@ -89,7 +95,7 @@ export const menuItems = [
     },
   
     {
-      id: 8,
+      id: 9,
       title: "Report",
       icon: "heroicons-outline:flag",
       isHide: true,

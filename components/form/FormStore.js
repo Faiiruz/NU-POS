@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { tableStore, provinces } from "../constant/table-data";
 import OrganizationRepository from "@/repositories/OrganizationRepository";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAppContext } from "../context/AppContext";
 
 const FormStore = () => {
   const router = useRouter();
@@ -16,7 +19,13 @@ const FormStore = () => {
   const [selectedSubdistrict, setSelectedSubdistrict] = useState(null);
   const [selectedPostalCode, setSelectedPostalCode] = useState(null);
   const [selectedUserAccess, setSelectedUserAccess] = useState("");
+  const [passwordError, setPasswordError] = useState("")
   const [userData, setUserData] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
+
+  const keyContext = 'tableStore'
+  const contextData = useAppContext(keyContext)
+  const {addContext, removeContext } = contextData
 
   const fetchData = async (type, subtype) => {
     try {
@@ -35,36 +44,128 @@ const FormStore = () => {
     }
   };
 
-  useEffect(async () => {
-    const response = await fetchData(1, 123);
-    console.log(response);
-    setRegionData(response);
+  useEffect(() => {
+    // const response = await fetchData(1, 123);
+     fetchData(1, 123)
+     .then(response => {
+       setRegionData(response);
+     })
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errors = {};
+    let hasErrors = false;
+
+    if (!userData.password){
+      errors.password = "Password is required"
+      hasErrors = true
+      toast.error("Please fill in the Password field");
+    }
+
+    if (!userData._uname_admin){
+      errors._uname_admin = "User Name is required"
+      hasErrors = true
+      toast.error("Please fill in the User Name field");
+    }
+  
+    if (!userData.org_name) {
+      errors.org_name = "Outlet Name is required";
+      hasErrors = true;
+      toast.error("Please fill in the Outlet Name field");
+    }
+  
+    if (!userData.name) {
+      errors.name = "Owner Name is required";
+      hasErrors = true;
+      toast.error("Please fill in the Owner Name field");
+    }
+  
+    if (!userData.org_email) {
+      errors.org_email = "Email is required";
+      hasErrors = true;
+      toast.error("Please fill in the Email field");
+    }
+
+    if (!userData.org_phone){
+      errors.org_phone = "Phone Number is required"
+      hasErrors = true
+      toast.error("Please fill in the Phone Number field");
+    }
+
+    if (!userData.org_address){
+      errors.org_address = "Address is required"
+      hasErrors = true
+      toast.error("Please fill in the Address field");
+    }
+
+    if (!userData.org_province_name){
+      errors.org_province_name = "Province is required"
+      hasErrors = true
+      toast.error("Please fill in the Province field");
+    }
+
+    if (!userData.org_regency_city_name){
+      errors.org_regency_city_name = "Regency is required"
+      hasErrors = true
+      toast.error("Please fill in the Regency field");
+    }
+
+    // if (!userData.org_district_name){
+    //   errors.org_district_name = "District is required"
+    //   hasErrors = true
+    //   toast.error("Please fill in the District field");
+    // }
+
+    // if (!userData.org_sub_district){
+    //   errors.org_sub_district_name = "Sub District is required"
+    //   hasErrors = true
+    //   toast.error("Please fill in the Sub District field");
+    // }
+
+    if (userData.password !== userData.rePassword) {
+      errors.password = "Passwords do not match";
+      errors.rePassword = "Passwords do not match";
+      hasErrors = true;
+      toast.error("Passwords do not match");
+    }
+    // Jika ada kesalahan, atur state pesan kesalahan dan tampilkan notifikasi toast
+    if (hasErrors) {
+      setFormErrors(errors);
+      return;
+    }
+    // Reset pesan kesalahan jika validasi berhasil
+    setFormErrors({});
     try {
+      let token = localStorage.getItem("xa");
+      let dataToken = JSON.parse(token);
+      userData.authority = 8;
       const response = await OrganizationRepository.postOrganization({
-        xa: localStorage.getItem("xa"), // Menggunakan token XA yang sesuai
-        data: userData, // Menggunakan data pengguna dari state
+        data: userData,
+        XA: dataToken
       });
 
       console.log(response); // Menampilkan respons ke konsol
-
-      if (response && response.success) {
-        // Tangani permintaan berhasil
-        // Misalnya, mengalihkan pengguna ke halaman lain
-        router.push("/store");
+      console.log("1231412");
+      if (response && response['data']) {
+        console.log(contextData);
+        console.log(contextData[keyContext]);
+        // let newData = contextData[keyContext].unshift(response['data'])
+        // console.log(newData);
+        // addContext(keyContext, newData)
+        toast.success("Data has been successfully submitted");
+        // router.push("/store");
       } else {
-        // Tangani permintaan gagal atau kesalahan
-        // Misalnya, menampilkan pesan kesalahan kepada pengguna
-        console.error("Gagal menambahkan toko:", response.error);
+        console.error("Failed to add store:", response.error);
+        toast.error("Failed to add store");
       }
     } catch (error) {
-      // Tangani kesalahan yang terjadi pada permintaan
-      console.error("Kesalahan pada permintaan:", error);
+      console.error("Error in request:", error);
+      toast.error("An error occurred");
     }
   };
+
+  
 
   const handleProvinceChange = async (event) => {
     const selectedProvince = event.target.value;
@@ -79,10 +180,6 @@ const FormStore = () => {
     setSelectedDistrict(null);
     setSelectedSubdistrict(null);
     setSelectedPostalCode("");
-    setUserData((prevUserData) => ({
-      ...prevUserData,
-      [event.target.name]: event.target.value,
-    }));
     setUserData((prevUserData) => ({
       ...prevUserData,
       ["org_province_name"]: org_province_name,
@@ -230,8 +327,9 @@ const FormStore = () => {
             </label>
             <select
               value={regionData.value}
+              className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-non"
               onChange={handleProvinceChange}
-              name="org_province"
+              name="org_province_name"
             >
               <option value="">Pilih provinsi</option>
               {regionData.map((item) => (
@@ -253,10 +351,11 @@ const FormStore = () => {
               Kabupaten/Kota
             </label>
             <select
+            className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-non"
               value={selectedRegency}
               onChange={handleRegencyChange}
               disabled={!selectedProvince}
-              name="org_regency_city"
+              name="org_regency_city_name"
             >
               <option value="">Pilih kabupaten/kota</option>
               {regencyData.map((item) => (
@@ -278,10 +377,11 @@ const FormStore = () => {
               Kecamatan
             </label>
             <select
+            className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-non"
               value={selectedDistrict}
               onChange={handleDistrictChange}
               disabled={!selectedRegency}
-              name="org_district"
+              name="org_district_name"
             >
               <option value="">Pilih kecamatan</option>
               {districtData.map((item) => (
@@ -303,10 +403,11 @@ const FormStore = () => {
               Kelurahan/Desa
             </label>
             <select
+            className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-non"
               value={selectedSubdistrict}
               onChange={handleSubdistrictChange}
               disabled={!selectedDistrict}
-              name="org_sub_district"
+              name="org_sub_district_name"
             >
               <option value="">Pilih kelurahan</option>
               {subdisrictData.map((item) => (
@@ -328,6 +429,7 @@ const FormStore = () => {
               Postal Code
             </label>
             <input
+            className="w-3/4 px-2 py-1 border border-gray-300 rounded-md focus:outline-non"
               type="form"
               value={selectedPostalCode}
               disabled
@@ -406,7 +508,7 @@ const FormStore = () => {
               type="password"
               id="rePassword"
               name="rePassword"
-              value={userData.password}
+              value={userData.rePassword}
               onChange={handlerChange}
             />
           </div>
@@ -420,6 +522,7 @@ const FormStore = () => {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -3,10 +3,14 @@ import cbor from "cbor";
 
 class OrganizationRepository {
   async postOrganization(params) {
+    console.log(params);
+    console.log("1231");
     const data = params.data;
-    const reponse = await Repository.post(`${baseUrl}/_organization `, data, {
+    console.log(data);
+    const endData = cbor.encode(data)
+    const reponse = await Repository.post(`${baseUrl}/_organization `, endData, {
       headers: {
-        xa: params.xa,
+        xa: params.XA,
       },
       contentType: "application/cbor",
       responseType: "arraybuffer",
@@ -40,8 +44,8 @@ class OrganizationRepository {
       });
     return reponse;
   }
-  async getOrganization(params) {
-    const reponse = await Repository.get(`${baseUrl}/_organization`, {
+  async getOrganization(params, authority) {
+    const reponse = await Repository.get(`${baseUrl}/_organizationFilter/${authority}`, {
       headers: params,
       contextType: "application/json",
       responseType: "arraybuffer",
