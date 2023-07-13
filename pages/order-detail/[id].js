@@ -105,16 +105,16 @@ const TableDetailOrder = () => {
                     className="text-sm text-slate-700 text-left"
                     key={item.id}
                   >
-                    <td className=" px-4 border-b">{item.id}</td>
-                    <td className=" px-4 border-b">{item.product_name}</td>
-                    <td className=" px-4 border-b">{item.category_name}</td>
-                    {/* <td className=" px-4">{item.price}</td> */}
-                    <td className=" px-4 border-b">{item.qty}</td>
-                    <td className=" px-4 border-b">{item.qty_receive}</td>
-                    <td className=" px-4 border-b">{item.qty_send}</td>
-                    <td className=" px-4 border-b">{item.unit}</td>
-                    <td className=" px-4 border-b">{item.volume}</td>
-                    <td className=" px-4 border-b">{item.volume_unit}</td>
+                    <td className="py-4 px-4 border-b">{item.id}</td>
+                    <td className="py-4 px-4 border-b">{item.product_name}</td>
+                    <td className="py-4 px-4 border-b">{item.category_name}</td>
+                    {/* <td className="py-4 px-4">{item.price}</td> */}
+                    <td className="py-4 px-4 border-b">{item.qty}</td>
+                    <td className="py-4 px-4 border-b">{item.qty_receive}</td>
+                    <td className="py-4 px-4 border-b">{item.qty_send}</td>
+                    <td className="py-4 px-4 border-b">{item.unit}</td>
+                    <td className="py-4 px-4 border-b">{item.volume}</td>
+                    <td className="py-4 px-4 border-b">{item.volume_unit}</td>
                   </tr>
                 ))}
             </tbody>
