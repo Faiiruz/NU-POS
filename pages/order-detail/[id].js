@@ -83,19 +83,19 @@ const TableDetailOrder = () => {
             </table>
           )}
 
-          <table className="w-full">
+          <table className="w-full mt-3">
             <thead>
               <tr className="text-left text-md text-slate-700">
-                <th className="py-2 px-4">SKU</th>
-                <th className="py-2 px-4">Nama Produk</th>
-                <th className="py-2 px-4">Kategori</th>
+                <th className="py-2 px-4 border-b">SKU</th>
+                <th className="py-2 px-4 border-b">Nama Produk</th>
+                <th className="py-2 px-4 border-b">Kategori</th>
                 {/* <th className="py-2 px-4">Price</th> */}
-                <th className="py-2 px-4">Jumlah</th>
-                <th className="py-2 px-4">Jumlah Diterima</th>
-                <th className="py-2 px-4">Jumlah Diterima</th>
-                <th className="py-2 px-4">Unit</th>
-                <th className="py-2 px-4">Isi</th>
-                <th className="py-2 px-4">Unit isi</th>
+                <th className="py-2 px-4 border-b">Jumlah</th>
+                <th className="py-2 px-4 border-b">Jumlah Diterima</th>
+                <th className="py-2 px-4 border-b">Jumlah Diterima</th>
+                <th className="py-2 px-4 border-b">Unit</th>
+                <th className="py-2 px-4 border-b">Isi</th>
+                <th className="py-2 px-4 border-b">Unit isi</th>
               </tr>
             </thead>
             <tbody>
@@ -105,16 +105,16 @@ const TableDetailOrder = () => {
                     className="text-sm text-slate-700 text-left"
                     key={item.id}
                   >
-                    <td className="py-4 px-4">{item.id}</td>
-                    <td className="py-4 px-4">{item.product_name}</td>
-                    <td className="py-4 px-4">{item.category_name}</td>
-                    {/* <td className="py-4 px-4">{item.price}</td> */}
-                    <td className="py-4 px-4">{item.qty}</td>
-                    <td className="py-4 px-4">{item.qty_receive}</td>
-                    <td className="py-4 px-4">{item.qty_send}</td>
-                    <td className="py-4 px-4">{item.unit}</td>
-                    <td className="py-4 px-4">{item.volume}</td>
-                    <td className="py-4 px-4">{item.volume_unit}</td>
+                    <td className=" px-4 border-b">{item.id}</td>
+                    <td className=" px-4 border-b">{item.product_name}</td>
+                    <td className=" px-4 border-b">{item.category_name}</td>
+                    {/* <td className=" px-4">{item.price}</td> */}
+                    <td className=" px-4 border-b">{item.qty}</td>
+                    <td className=" px-4 border-b">{item.qty_receive}</td>
+                    <td className=" px-4 border-b">{item.qty_send}</td>
+                    <td className=" px-4 border-b">{item.unit}</td>
+                    <td className=" px-4 border-b">{item.volume}</td>
+                    <td className=" px-4 border-b">{item.volume_unit}</td>
                   </tr>
                 ))}
             </tbody>
