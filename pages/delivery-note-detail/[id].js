@@ -64,9 +64,9 @@ const TreeDetail = () => {
                   <table className="w-full text-left">
                     <thead>
                       <tr>
-                        <th className="py-2 px-4 border-b">SKU</th>
-                        <th className="py-2 px-4 border-b">Product Name</th>
-                        <th className="py-2 px-4 border-b">Category</th>
+                        <th className="py-1 px-4 border-b">SKU</th>
+                        <th className="py-1 px-4 border-b">Product Name</th>
+                        <th className="py-1 px-4 border-b">Category</th>
                         <th className="py-2 px-4 border-b">Quantity</th>
                         <th className="py-2 px-4 border-b">Quantity Recived</th>
                         <th className="py-2 px-4 border-b">Quantity Send</th>
@@ -78,15 +78,15 @@ const TreeDetail = () => {
                     <tbody>
                       {item.detail_order.map((detail) => (
                         <tr key={detail.id}>
-                          <td className="py-2 px-4 border-b">{detail.product_id}</td>
-                          <td className="py-2 px-4 border-b">{detail.product_name}</td>
-                          <td className="py-2 px-4 border-b">{detail.category_name}</td>
-                          <td className="py-2 px-4 border-b">{detail.qty}</td>
-                          <td className="py-2 px-4 border-b">{detail.qty_receive}</td>
-                          <td className="py-2 px-4 border-b">{detail.qty_send}</td>
-                          <td className="py-2 px-4 border-b">{detail.unit}</td>
-                          <td className="py-2 px-4 border-b">{detail.volume}</td>
-                          <td className="py-2 px-4 border-b">{detail.volume_unit}</td>
+                          <td className="py-1 px-4 border-b">{detail.product_id}</td>
+                          <td className="py-4 px-4 border-b">{detail.product_name}</td>
+                          <td className="py-4 px-4 border-b">{detail.category_name}</td>
+                          <td className="py-4 px-4 border-b">{detail.qty}</td>
+                          <td className="py-4 px-4 border-b">{detail.qty_receive}</td>
+                          <td className="py-4 px-4 border-b">{detail.qty_send}</td>
+                          <td className="py-4 px-4 border-b">{detail.unit}</td>
+                          <td className="py-4 px-4 border-b">{detail.volume}</td>
+                          <td className="py-4 px-4 border-b">{detail.volume_unit}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -101,5 +101,4 @@ const TreeDetail = () => {
   );
 };
 
-export default TreeDe2ail;
- border-b
+export default TreeDetail;
